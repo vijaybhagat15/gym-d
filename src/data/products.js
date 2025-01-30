@@ -23,7 +23,7 @@ export const products = [
     "name": "Yoga Mat (Non-Slip)",
     "price": 19.99,
     "description": "Eco-friendly yoga mat with non-slip surface for safe practice.",
-    "image": "https://www.pikpng.com/pngl/b/513-5136705_yoga-mat-png-exercise-mat-clipart.png",
+    "image": "https://www.protekgr.com/wp-content/uploads/2015/02/0.25-Purpul.jpg",
     "category": "Accessories",
     "rating": 4.6
   },
