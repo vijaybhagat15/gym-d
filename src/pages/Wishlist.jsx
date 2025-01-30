@@ -66,7 +66,7 @@ export default function Wishlist() {
             </div>
           </div>
         </div>
-      <p className="text-center text-white font-sans bg-gray-900">
+      <p className="text-center text-white font-sans bg-indigo-500">
         Total items in wishlist: {wishlistCount}
       </p>
       <div className="container mx-auto py-2 px-4 sm:py-20 sm:px-14">
@@ -123,7 +123,7 @@ export default function Wishlist() {
                     ))}
                 </div>
                 <button
-                className="absolute bottom-2 right-2 bg-orange-500 text-white text-[10px] font-medium p-2 rounded-lg hover:bg-white hover:text-orange-500 transition-all duration-500 border-2 border-white font-sans"
+                className="absolute bottom-2 right-2 hover:bg-gradient-to-t bg-gradient-to-b from-blue-500 to-purple-500 text-white text-[10px] font-medium p-2 rounded-lg hover:bg-white hover:text-orange transition-all duration-500 border-2 border-white font-sans"
                 onClick={(e) => handleAddToCart(product, e)}
               >
                 Add to Cart

@@ -40,22 +40,22 @@ function Moon() {
   };
 
   return (
-    <>              {/* Hero Section */}
+    <div className='bg-gradient-to-t from-transparent to-black' >              {/* Hero Section */}
         <div className=" border-b-2 text-white "style={{ backgroundImage: "url('/images/bg.jpg')" }}>
-<div className="relative w-full h-[5vh] sm:h-[20vh] overflow-hidden">
+<div className="relative w-full h-[5vh] sm:h-[10vh] overflow-hidden">
   <div className="relative z-10 flex items-center justify-center w-full h-full bg-black bg-opacity-30">
     <h1 className="text-xl sm:text-5xl font-bold font-serif text-white">Login Page</h1>
   </div>
 </div>
 </div>
-    <div className="h-full w-full flex items-center justify-center bg-gray-300">
+    <div className="h-full w-full flex items-center justify-center">
 
       {/* Main container */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 items-center max-w-6xl w-full bg-gray-300">
+      <div className="grid grid-cols-1 lg:grid-cols-2 items-center max-w-6xl w-full">
         {/* Login Image */}
         <div className="hidden lg:flex items-center justify-center  ">
           <img
-            src="https://static.vecteezy.com/system/resources/previews/002/710/265/original/profile-login-style-vector.jpg"
+            src="https://img.freepik.com/free-vector/gym-school-design-concept_1284-19997.jpg?uid=R183362148&ga=GA1.1.863027414.1736430393&semt=ais_hybrid"
             alt="Login"
             className="max-w-md max-h-md rounded-3xl"
           />
@@ -147,7 +147,7 @@ function Moon() {
         </div>
       </div>
     </div>
-    </>
+    </div>
   );
 }
 

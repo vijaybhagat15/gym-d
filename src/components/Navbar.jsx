@@ -81,6 +81,7 @@ const Navbar = () => {
         <div className="flex items-center space-x-4 pr-6 lg:pr-10 text-lg">
           <FaSearch className="flex sm:hidden" />
           {!isAuthenticated ? (
+            <>
             <Link
               to="/login"
               className="relative group flex items-center sm:w-14 w-10 sm:h-7 h-5 duration-600 ml-auto text-[10px] sm:text-lg bg-blue-500 hover:bg-blue-400 text-white font-bold   rounded-xl  transition-all duration-500 border-2 border-gray-300 font-sans"
@@ -90,22 +91,27 @@ const Navbar = () => {
                 Login
               </span>
             </Link>
+              <Link to="/Login" className="relative sm:border-[1px] border-gray-500  rounded-full sm:p-2">
+              <FaShoppingCart className="hover:text-indigo-500 text-gray-500 cursor-pointer text-xl" />
+              <span className="absolute -top-1 -right-2 bg-red-500 text-white text-xs rounded-full px-1">{cartCount}</span>
+              </Link>
+              </>
 
           ) : (
             <>
-              <Link to="/profile" className='relative sm:border-[1px] border-gray-500 rounded-full sm:p-2'>
+              <Link to="/profile" className='relative sm:border-[1px] border-indigo-500 rounded-full sm:p-2'>
                 <FaUser className="hover:text-indigo-500 text-gray-500 cursor-pointer text-xl" />
               </Link>
-              <Link to="/Wishlist" className="relative sm:border-[1px] border-gray-500 rounded-full sm:p-2  ">
+              <Link to="/Wishlist" className="relative sm:border-[1px] border-indigo-500 rounded-full sm:p-2  ">
                 <FaHeart className="hover:text-indigo-500 text-gray-500 cursor-pointer text-xl" />
                 <span className="absolute -top-1 -right-2 bg-red-500 text-white text-xs rounded-full px-1">{savedWishlistCount}</span>
               </Link>
+              <Link to="/cart" className="relative sm:border-[1px] border-indigo-500  rounded-full sm:p-2">
+                <FaShoppingCart className="hover:text-indigo-500 text-gray-500 cursor-pointer text-xl" />
+                <span className="absolute -top-1 -right-2 bg-red-500 text-white text-xs rounded-full px-1">{cartCount}</span>
+              </Link>
             </>
           )}
-          <Link to="/cart" className="relative sm:border-[1px] border-gray-500  rounded-full sm:p-2">
-            <FaShoppingCart className="hover:text-indigo-500 text-gray-500 cursor-pointer text-xl" />
-            <span className="absolute -top-1 -right-2 bg-red-500 text-white text-xs rounded-full px-1">{cartCount}</span>
-          </Link>
         </div>
 
         {/* Sidebar */}

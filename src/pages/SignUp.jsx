@@ -48,7 +48,7 @@ export default function SignUp() {
   return (
     <>
         <div className=" border-b-2 text-white "style={{ backgroundImage: "url('/images/bg.jpg')" }}>
-    <div className="relative w-full h-[5vh] sm:h-[20vh] overflow-hidden">
+    <div className="relative w-full h-[5vh] sm:h-[10vh] overflow-hidden">
       <div className="relative z-10 flex items-center justify-center w-full h-full bg-black bg-opacity-30">
         <h1 className="text-xl sm:text-5xl font-bold font-serif text-white">Sign Up</h1>
       </div>
@@ -65,15 +65,15 @@ export default function SignUp() {
       <div className='lg:grid lg:grid-cols-2'>
       <div className="hidden lg:flex items-center justify-center  ">
           <img
-            src="https://img.freepik.com/free-vector/privacy-policy-concept-illustration_114360-7853.jpg?ga=GA1.1.863027414.1736430393&semt=ais_hybrid"
+            src="https://img.freepik.com/premium-vector/black-gym-logo-man-woman-white-background_1144471-10286.jpg?w=740"
             alt="Login"
             className="max-w-md max-h-md rounded-3xl"
           />
         </div>
       {/* Sign Up Section */}
       <div className="relative z-10 flex flex-col lg:flex-row items-center w-full max-w-6xl px-4">
-        <div className="w-full  bg-black  p-4 rounded-3xl shadow-lg border border-gray-500 mx-auto">
-          <form onSubmit={handleSubmit} className="space-y-3">
+        <div className="w-full  bg-black  p-4 px-14 rounded-3xl shadow-lg border border-gray-500 mx-auto">
+          <form onSubmit={handleSubmit} className="space-y-3 ">
             <h2 className="text-xl font-bold text-center text-white font-serif">Sign Up Here</h2>
 
             {/* Error or Success Messages */}

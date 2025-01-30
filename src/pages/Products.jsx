@@ -132,12 +132,12 @@ export default function Products() {
           </div>
         </div>
 
-        <div className="col-span-1 flex flex-col space-y-1 min-w-32 lg:hidden border-2 border-x-gray-200 rounded-lg px-3 py-1 text-black h-min  bg-gray-500 text-xs">
+        <div className="col-span-1 flex flex-col space-y-1 min-w-32 lg:hidden border-2 border-x-gray-200 rounded-lg px-3 py-1 text-white h-min  bg-indigo-500 text-xs">
           <div className="flex flex-col ">
             <input
               type="text"
               placeholder="Search products...🔍"
-              className=" px-2  rounded-md sm:my-2 border-2 hover:border-custom-beige border-gray-400 sm:w-auto "
+              className=" px-2  rounded-md sm:my-2 border-2 hover:border-custom-beige border-gray-400 sm:w-auto placeholder-black"
               value={searchQuery}
               onChange={handleSearchChange}
             />
@@ -190,7 +190,63 @@ export default function Products() {
         </div>
       </div>
       <div className="container sm:mx-auto py-2 sm:py-5 sm:px-1 grid lg:grid-cols-5 gap-6 grid-cols-2">
-        <div className="col-span-1 lg:flex flex-col space-y-4 min-w-32 hidden border-2 border-x-gray-100 rounded-lg p-3 text-black  bg-gray-400">
+
+        <div className="col-span-4 grid text-sm grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 ml-1">
+          {filteredProducts.map((product) => (
+            <div
+              key={product.id}
+              className=" min-w-32 shadow-md rounded-lg p-4 hover:shadow-2xl hover:scale-105 transition-transform h-auto relative"
+              onClick={() => handleCardClick(product.id)}
+            >
+              <div className="relative w-full aspect-w-1 aspect-h-1 rounded-md overflow-hidden">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-full object-cover"
+                />
+                <button
+                  className={`absolute top-1 right-1 rounded-full p-1 transition-colors ${
+                    wishlist.some((item) => item.id === product.id)
+                      ? 'text-red-500'
+                      : 'text-gray-400'
+                  }`}
+                  onClick={(e) => handleAddToWishlist(product, e)}
+                >
+                  <FaHeart size={15} />
+                </button>
+              </div>
+              <h3 className="mt-2 text-base font-semibold font-serif text-gray-800">
+                {product.name}
+              </h3>
+              <p className="text-gray-600">${product.price.toFixed(2)}</p>
+              <p className="text-gray-500 text-xs mb-2 font-sans">
+                {product.description}
+              </p>
+              <div className="flex items-center mb-6">
+                {Array(5)
+                  .fill()
+                  .map((_, i) => (
+                    <span key={i}>
+                      {i < Math.floor(product.rating) ? (
+                        <FaStar className="text-yellow-500" />
+                      ) : i < product.rating ? (
+                        <FaStarHalfAlt className="text-yellow-500" />
+                      ) : (
+                        <FaRegStar className="text-yellow-500" />
+                      )}
+                    </span>
+                  ))}
+              </div>
+              <button
+                className="absolute bottom-2 right-2 hover:bg-gradient-to-t bg-gradient-to-b from-blue-500 to-purple-500 text-white text-[10px] font-medium p-2 rounded-lg hover:bg-white hover:text-orange transition-all duration-500 border-2 border-white font-sans"
+                onClick={(e) => handleAddToCart(product, e)}
+              >
+                Add to Cart
+              </button>
+            </div>
+          ))}
+        </div>
+        <div className="col-span-1 lg:flex flex-col space-y-4 min-w-32 hidden border-2 border-x-gray-100 rounded-lg p-3 text-white  bg-indigo-500">
           <div className="flex flex-col space-y-2">
             <input
               type="text"
@@ -241,61 +297,6 @@ export default function Products() {
               </div>
             ))}
           </div>
-        </div>
-        <div className="col-span-4 grid text-sm grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 ml-1">
-          {filteredProducts.map((product) => (
-            <div
-              key={product.id}
-              className=" min-w-32 shadow-md rounded-lg p-4 hover:shadow-2xl hover:scale-105 transition-transform h-auto relative"
-              onClick={() => handleCardClick(product.id)}
-            >
-              <div className="relative w-full aspect-w-1 aspect-h-1 rounded-md overflow-hidden">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-full object-cover"
-                />
-                <button
-                  className={`absolute top-1 right-1 rounded-full p-1 transition-colors ${
-                    wishlist.some((item) => item.id === product.id)
-                      ? 'text-red-500'
-                      : 'text-gray-400'
-                  }`}
-                  onClick={(e) => handleAddToWishlist(product, e)}
-                >
-                  <FaHeart size={15} />
-                </button>
-              </div>
-              <h3 className="mt-2 text-base font-semibold font-serif text-gray-800">
-                {product.name}
-              </h3>
-              <p className="text-gray-600">${product.price.toFixed(2)}</p>
-              <p className="text-gray-500 text-xs mb-2 font-sans">
-                {product.description}
-              </p>
-              <div className="flex items-center mb-6">
-                {Array(5)
-                  .fill()
-                  .map((_, i) => (
-                    <span key={i}>
-                      {i < Math.floor(product.rating) ? (
-                        <FaStar className="text-yellow-500" />
-                      ) : i < product.rating ? (
-                        <FaStarHalfAlt className="text-yellow-500" />
-                      ) : (
-                        <FaRegStar className="text-yellow-500" />
-                      )}
-                    </span>
-                  ))}
-              </div>
-              <button
-                className="absolute bottom-2 right-2 bg-orange-500 text-white text-[10px] font-medium p-1 rounded-lg hover:bg-white hover:text-orange-500 transition-all duration-500 border-2 border-white font-sans"
-                onClick={(e) => handleAddToCart(product, e)}
-              >
-                Add to Cart
-              </button>
-            </div>
-          ))}
         </div>
       </div>
     </section>

@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { products } from "../data/products"; // Import products data
+import { products } from "../data/products";
 import { FaStar, FaStarHalfAlt, FaRegStar, FaHeart } from "react-icons/fa";
 
-const GymFitnessSection = () => {
+const TopRatedProducts = () => {
   const navigate = useNavigate();
   const scrollContainerRef = useRef(null);
+
+  // Duplicate the product list for infinite scrolling
+  const duplicatedProducts = [...products, ...products];
 
   // State for cart and wishlist with localStorage initialization
   const [cart, setCart] = useState(() => {
@@ -26,22 +29,19 @@ const GymFitnessSection = () => {
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
   }, [wishlist]);
 
-  // Auto-scroll effect every 3 seconds
+  // Infinite auto-scroll effect
   useEffect(() => {
     const interval = setInterval(() => {
       if (scrollContainerRef.current) {
-        const scrollAmount = scrollContainerRef.current.clientWidth * 0.8; // Scroll dynamically
+        const scrollAmount = scrollContainerRef.current.clientWidth * 0.8;
         scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
 
-        // Reset scroll if at the end
-        if (
-          scrollContainerRef.current.scrollLeft + scrollContainerRef.current.clientWidth >=
-          scrollContainerRef.current.scrollWidth
-        ) {
-          scrollContainerRef.current.scrollTo({ left: 0, behavior: "smooth" });
+        // Reset scroll position when reaching the middle of duplicated products
+        if (scrollContainerRef.current.scrollLeft >= scrollContainerRef.current.scrollWidth / 2) {
+          scrollContainerRef.current.scrollTo({ left: 0, behavior: "auto" });
         }
       }
-    }, 4000);
+    }, 6000);
 
     return () => clearInterval(interval);
   }, []);
@@ -92,8 +92,8 @@ const GymFitnessSection = () => {
     <div className="py-8">
       <h2 className="text-3xl font-sans font-bold text-center mb-6">Gym and Fitness</h2>
 
-      {/* Buttons for manual navigation */}
-      <div className="flex justify-center gap-4 mb-4">
+      {/* Buttons for manual navigation */} 
+      <div className=" justify-center gap-4 mb-4 hidden">
         <button
           onClick={scrollLeft}
           className="bg-gray-300 px-4 py-2 rounded-lg text-black hover:bg-gray-400"
@@ -109,10 +109,13 @@ const GymFitnessSection = () => {
       </div>
 
       <div className="overflow-hidden scroll-smooth">
-        <div ref={scrollContainerRef} className="flex gap-6 px-4 overflow-x-scroll whitespace-nowrap no-scrollbar">
-          {products.map((product) => (
+        <div
+          ref={scrollContainerRef}
+          className="flex gap-6 px-4 overflow-x-scroll whitespace-nowrap no-scrollbar"
+        >
+          {duplicatedProducts.map((product, index) => (
             <div
-              key={product.id}
+              key={index}
               className="bg-accent min-w-60 shadow-md rounded-xl p-4 hover:shadow-2xl hover:scale-105 transition-transform h-auto relative"
               onClick={() => handleCardClick(product.id)}
             >
@@ -159,4 +162,4 @@ const GymFitnessSection = () => {
   );
 };
 
-export default GymFitnessSection;
+export default TopRatedProducts;

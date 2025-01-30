@@ -130,7 +130,7 @@ export default function ProductDetail() {
           <div className="mt-auto">
             <button
               onClick={(e) => handleAddToCart(product, e)}
-              className=" hover:bg-white hover:text-gray-500 bg-gray-500 text-white  hover:border-gray-500 py-3 px-6 rounded-md shadow-md  focus:outline-none focus:ring-2 focus:ring-orange-500 transition-colors duration-300 w-full sm:w-auto font-sans font-bold"
+              className=" hover:bg-gradient-to-t bg-gradient-to-b from-blue-500 to-purple-500 text-white py-3 px-6 rounded-md shadow-md  focus:outline-none focus:ring-2 focus:ring-orange-500 transition-colors duration-300 w-full sm:w-auto font-sans font-bold"
             >
               Add to Cart
             </button>
@@ -145,7 +145,7 @@ export default function ProductDetail() {
           {relatedProducts.map((related) => (
             <div
               key={related.id}
-              className="bg-white min-w-32 shadow-md rounded-xl p-4 hover:shadow-2xl hover:scale-105 border-2 border-gray-300 hover:border-gray-400 transition-transform h-auto relative"
+              className="bg-white min-w-32 shadow-md rounded-xl p-4 hover:shadow-2xl hover:scale-105 border-2  hover:border-gray-400 transition-transform h-auto relative"
               onClick={() => handleCardClick(related.id)}
             >
               <div className="relative w-full aspect-w-1 aspect-h-1 rounded-md overflow-hidden">
@@ -184,7 +184,7 @@ export default function ProductDetail() {
                   ))}
               </div>
               <button
-                className="absolute bottom-2 right-2 bg-orange-500 text-white text-[10px] font-medium p-2 rounded-lg hover:bg-white hover:text-orange-500 transition-all duration-500 border-2 border-white font-sans"
+                className="absolute bottom-2 right-2 hover:bg-gradient-to-t bg-gradient-to-b from-blue-500 to-purple-500 text-white text-[10px] font-medium p-2 rounded-lg hover:bg-white hover:text-orange transition-all duration-500 border-2 border-white font-sans"
                 onClick={(e) => handleAddToCart(product, e)}
               >
                 Add to Cart

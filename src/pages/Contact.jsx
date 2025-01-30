@@ -28,7 +28,7 @@ export default function Contact() {
             <img
               src="\images\cus.avif"
               alt="Customer Support"
-              className="w-full rounded-lg shadow-md"
+              className="w-full rounded-lg shadow-md border-[1px] border-indigo-500"
             />
             <h2 className="text-xl font-bold font-serif">Customer-Centric Approach:</h2>
             <p className="text-gray-900">
@@ -41,7 +41,7 @@ export default function Contact() {
             <img
               src="\images\impro.jpg"
               alt="Continuous Improvement"
-              className="w-full rounded-lg shadow-md"
+              className="w-full rounded-lg shadow-md border-[1px] border-indigo-500"
             />
             <h2 className="text-xl font-bold font-serif">Continuous Improvement:</h2>
             <p className="text-gray-900">
@@ -55,7 +55,7 @@ export default function Contact() {
           <h2 className="text-2xl font-bold text-center font-serif">How we can help you?</h2>
           <div className="grid md:grid-cols-3 gap-6">
             {/* Contact Us */}
-            <div className="bg-green-100 p-6 rounded-lg shadow-md">
+            <div className="bg-green-100 p-6 rounded-lg shadow-md border-[1px] border-indigo-500">
               <h3 className="text-lg font-bold flex items-center gap-2 font-serif">
                 <span className="text-green-500">
                   <FaPhoneAlt className="text-green-500" />
@@ -68,7 +68,7 @@ export default function Contact() {
             </div>
 
             {/* FAQs */}
-            <div className="bg-yellow-100 p-6 rounded-lg shadow-md">
+            <div className="bg-yellow-100 p-6 rounded-lg shadow-md border-[1px] border-indigo-500">
               <h3 className="text-lg font-bold flex items-center gap-2 font-serif">
                 <span className="text-yellow-500">
                   <FaEnvelope className="text-yellow-500" />
@@ -81,7 +81,7 @@ export default function Contact() {
             </div>
 
             {/* Feedback */}
-            <div className="bg-red-100 p-6 rounded-lg shadow-md">
+            <div className="bg-red-100 p-6 rounded-lg shadow-md border-[1px] border-indigo-500">
               <h3 className="text-lg font-bold flex items-center gap-2 font-serif">
                 <span className="text-red-500">
                   <FaPaperPlane className="text-red-500" />
@@ -100,7 +100,7 @@ export default function Contact() {
       <div className=" flex flex-col lg:flex-row items-center justify-center p-6 font-sans">
         {/* Contact Info */}
         <div className="w-full lg:w-1/2 max-w-md mb-8 lg:mb-0 lg:mr-12">
-          <div className=" shadow-lg rounded-lg p-8 mb-6 border-2 border-gray-400 hover:border-gray-600 transition-all duration-300 hover:scale-105 ">
+          <div className=" shadow-lg rounded-lg p-8 mb-6 border-[1px]  border-indigo-500 hover:border-gray-600 transition-all duration-300 hover:scale-105 ">
             <div className="flex items-center mb-4">
               <FaPhoneAlt className="text-gray-900 mr-4 text-2xl" />
               <h2 className="text-lg font-bold text-gray-800 font-serif">Call to Us</h2>
@@ -111,7 +111,7 @@ export default function Contact() {
             <p className="text-gray-900 font-semibold">Phone: +1 234 567 890</p>
           </div>
 
-          <div className="shadow-lg rounded-lg p-8 border-2 border-gray-400 hover:border-gray-600 transition-all duration-300 hover:scale-105">
+          <div className="shadow-lg rounded-lg p-8 border-[1px] border-indigo-500 hover:border-gray-600 transition-all duration-300 hover:scale-105">
             <div className="flex items-center mb-4">
               <FaEnvelope className="text-gray-900 mr-4 text-2xl" />
               <h2 className="text-lg font-bold text-gray-800 font-serif">Email Us</h2>
@@ -126,7 +126,7 @@ export default function Contact() {
 
         {/* Contact Form */}
         <div className="w-full lg:w-1/2 max-w-md">
-          <div className=" shadow-xl rounded-lg p-8 border-2 border-gray-400 hover:border-gray-600 transition-all duration-300 hover:scale-105">
+          <div className=" shadow-xl rounded-lg p-8 border-[1px] border-indigo-500 hover:border-gray-600 transition-all duration-300 hover:scale-105">
             <h1 className="text-lg font-bold text-center mb-6 font-serif">Give Feedback</h1>
             <form className="space-y-4">
               <div>
@@ -158,7 +158,7 @@ export default function Contact() {
               </div>
               <button
                 type="submit"
-                className="w-full py-3  text-gray-100 font-semibold  flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-gray-600  bg-orange-500  rounded-lg hover:bg-white hover:text-orange-500 transition-all duration-500 border-2 border-gray-300 font-sans"
+                className="w-full py-3   font-semibold  flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-gray-600    rounded-lg  transition-all duration-500 border-[1px] border-gray-300 font-sans hover:bg-gradient-to-t bg-gradient-to-b from-blue-500 to-purple-500 text-white"
               >
                 <FaPaperPlane className="mr-2" /> Send Message
               </button>

@@ -47,13 +47,13 @@ export default function Checkout() {
               </div>
       <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg">
         <div className="grid grid-cols-1 lg:grid-cols-3">
-          <div className="col-span-1 bg-blue-800 text-white p-6 space-y-4">
+          <div className="col-span-1 bg-indigo-700 text-white p-6 space-y-4">
             <h2 className="text-xl font-bold font-serif">BarbellBase</h2>
             <p className="text-sm text-blue-200 font-sans">
               BarbellBase Trusted Business
             </p>
 
-            <div className="bg-blue-700 p-4 rounded-lg space-y-3">
+            <div className="bg-indigo-500 p-4 rounded-lg space-y-3">
               <div className="flex items-center justify-between">
                 <img
                   src={cartItems[0].image}
@@ -173,7 +173,7 @@ export default function Checkout() {
 
               <button
                 type="submit"
-                className="w-full bg-black text-white py-3 rounded-lg font-medium hover:bg-gray-800"
+                className="w-full hover:bg-gradient-to-t bg-gradient-to-b from-blue-500 to-purple-500 text-white py-3 rounded-lg font-medium "
               >
                 Continue
               </button>

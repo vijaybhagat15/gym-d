@@ -75,7 +75,7 @@ export default function Profile() {
   };
 
   return (
-  <>
+  <div style={{ backgroundImage: "url('images/p-pg.jpg')" }}>
          
         <div className=" border-b-2 text-white "style={{ backgroundImage: "url('/images/bg.jpg')" }}>
     <div className="relative w-full h-[5vh] sm:h-[10vh] overflow-hidden">
@@ -84,11 +84,11 @@ export default function Profile() {
       </div>
     </div>
   </div>
-    <div className="min-h-screen  font-sans flex  justify-center py-5 text-black">
-      <div className="max-w-5xl w-full bg-white shadow-xl rounded-lg overflow-hidden border-4 border-gray-400 sm:flex h-min">
+    <div className="min-h-screen  font-sans flex  justify-center py-5 text-black ">
+      <div className="max-w-5xl w-full bg-white shadow-xl rounded-2xl overflow-hidden border-[1px] border-indigo-500 sm:flex h-min">
         <div className="sm:w-1/3  flex  justify-center sm:mb-auto m-2">
           <div className="w-40 h-40 sm:w-full sm:h-full  overflow-hidden">
-            <img src={image} alt="Profile" className="w-full h-full object-contain" />
+            <img src={image} alt="Profile" className="w-full h-full object-contain rounded-2xl border-[1px] border-indigo-500" />
           </div>
         </div>
 
@@ -165,6 +165,6 @@ export default function Profile() {
         </div>
       </div>
     </div>
-    </>
+    </div>
   );
 }

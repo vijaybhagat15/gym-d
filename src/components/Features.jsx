@@ -32,8 +32,10 @@ const Features = () => {
           key={index}
           className="flex flex-col items-center text-center max-w-[120px]"
         >
+          <div className="bg-gradient-to-r from-pink-500 via-orange-500 to-purple-500 p-[2px] rounded-full">
           <div className="flex items-center justify-center sm:w-20 sm:h-20 w-10 h-10 bg-indigo-50 rounded-full p-2">
             {feature.icon}
+          </div>
           </div>
           <h3 className="mt-4 sm:text-lg text-sm font-bold text-gray-900">{feature.title}</h3>
           <p className="mt-2 sm:text-sm text-xs text-gray-700">{feature.subtitle}</p>

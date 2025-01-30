@@ -115,12 +115,12 @@ export default function Cart() {
             </div>
           </div>
         </div>
-        <div className="col-span-1 flex flex-col space-y-1 min-w-32 lg:hidden border-2 border-x-gray-200 rounded-lg px-3 py-1 text-black h-min  bg-gray-500 text-xs">
+        <div className="col-span-1 flex flex-col space-y-1 min-w-32 lg:hidden border-2 border-x-gray-200 rounded-lg px-3 py-1 text-white h-min  bg-indigo-500 text-xs">
           <div className="flex flex-col ">
             <input
               type="text"
               placeholder="Search products...🔍"
-              className=" px-2  rounded-md sm:my-2 border-2 hover:border-custom-beige border-gray-400 sm:w-auto "
+              className=" px-2  rounded-md sm:my-2 border-2 hover:border-custom-beige border-gray-400 sm:w-auto placeholder-black"
               value={searchQuery}
               onChange={handleSearchChange}
             />
@@ -173,64 +173,7 @@ export default function Cart() {
         </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-                    {/* Filters Section */}
-        <div className="col-span-1 lg:flex flex-col space-y-4 min-w-32  border-2 border-x-gray-200 rounded-lg p-3 text-black hidden bg-gray-500">
-          <div className="flex flex-col space-y-2">
-            <input
-              type="text"
-              placeholder="Search products...🔍"
-              className="sm:px-2 sm:py-2 px-2 rounded-md sm:my-2 border-2 hover:border-custom-beige border-gray-400 sm:w-auto "
-              value={searchQuery}
-              onChange={handleSearchChange}
-            />
-            <label className="text-sm font-semibold">
-              Price Range: ${filters.price[0]} - ${filters.price[1]}
-            </label>
-            <Slider
-              range
-              min={0}
-              max={500}
-              defaultValue={[0, 500]}
-              value={filters.price}
-              onChange={handlePriceChange}
-            />
-          </div>
-          <div className="flex flex-col space-y-2">
-            <label className="text-sm font-semibold ">
-              Minimum Rating: {filters.rating} Stars
-            </label>
-            <Slider
-              min={0}
-              max={5}
-              step={0.5}
-              defaultValue={0}
-              value={filters.rating}
-              onChange={handleRatingChange}
-              
-            />
-          </div>
-          <div className="flex flex-col space-y-2">
-            <label className="text-sm font-semibold">
-              Categories:
-            </label>
-            <div className="grid grid-cols-2">
-              {uniqueCategories.map((category) => (
-                <div key={category} className="flex items-center space-x-2">
-                  <input
-                    type="checkbox"
-                    id={category}
-                    checked={filters.category.includes(category)}
-                    onChange={() => handleCategoryChange(category)}
-                    className="form-checkbox h-4 w-4"
-                  />
-                  <label htmlFor={category} className="text-sm">
-                    {category}
-                  </label>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+
                     {/* Cart Items or Empty Message */}
                     <div className="lg:col-span-2 space-y-6">
                         {filteredCart.length > 0 ? (
@@ -320,13 +263,71 @@ export default function Cart() {
                                 <span>${(calculateTotal() - calculateSavings() - calculateCouponDiscount() + calculateTaxes()).toFixed(2)}</span>
                             </div>
                             <button
-                                className="mt-4 w-full hover:border-gray-500 py-2    text-white font-bold  bg-orange-500  rounded-lg hover:bg-white hover:text-orange-500 transition-all duration-500 border-2 border-gray-300 font-sans"
+                                className="mt-4 w-full hover:border-gray-500 py-2 font-bold  hover:bg-gradient-to-t bg-gradient-to-b from-blue-500 to-purple-500 text-white  rounded-lg hover:bg-white transition-all duration-500 border-2 border-gray-300 font-sans"
                                 onClick={handleCheckout}
                             >
                                 Checkout
                             </button>
                         </div>
                     )}
+                                        {/* Filters Section */}
+        <div className="col-span-1 lg:flex flex-col space-y-4 min-w-32  border-2 border-x-gray-200 rounded-lg p-3 text-white hidden bg-indigo-500">
+          <div className="flex flex-col space-y-2">
+            <input
+              type="text"
+              placeholder="Search products...🔍"
+              className="sm:px-2 sm:py-2 px-2 rounded-md sm:my-2 border-2 hover:border-custom-beige border-gray-400 sm:w-auto placeholder-black"
+              value={searchQuery}
+              onChange={handleSearchChange}
+            />
+            <label className="text-sm font-semibold">
+              Price Range: ${filters.price[0]} - ${filters.price[1]}
+            </label>
+            <Slider
+              range
+              min={0}
+              max={500}
+              defaultValue={[0, 500]}
+              value={filters.price}
+              onChange={handlePriceChange}
+            />
+          </div>
+          <div className="flex flex-col space-y-2">
+            <label className="text-sm font-semibold ">
+              Minimum Rating: {filters.rating} Stars
+            </label>
+            <Slider
+              min={0}
+              max={5}
+              step={0.5}
+              defaultValue={0}
+              value={filters.rating}
+              onChange={handleRatingChange}
+              
+            />
+          </div>
+          <div className="flex flex-col space-y-2">
+            <label className="text-sm font-semibold">
+              Categories:
+            </label>
+            <div className="grid grid-cols-2">
+              {uniqueCategories.map((category) => (
+                <div key={category} className="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    id={category}
+                    checked={filters.category.includes(category)}
+                    onChange={() => handleCategoryChange(category)}
+                    className="form-checkbox h-4 w-4"
+                  />
+                  <label htmlFor={category} className="text-sm">
+                    {category}
+                  </label>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
                 </div>
             </div>
         </div>
