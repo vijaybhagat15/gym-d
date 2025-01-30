@@ -91,7 +91,7 @@ const Navbar = () => {
                 Login
               </span>
             </Link>
-              <Link to="/Login" className="relative sm:border-[1px] border-gray-500  rounded-full sm:p-2">
+              <Link to="/Login" className="relative sm:border-[1px] border-indigo-500  rounded-full sm:p-2">
               <FaShoppingCart className="hover:text-indigo-500 text-gray-500 cursor-pointer text-xl" />
               <span className="absolute -top-1 -right-2 bg-red-500 text-white text-xs rounded-full px-1">{cartCount}</span>
               </Link>
