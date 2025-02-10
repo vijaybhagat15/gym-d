@@ -4,7 +4,7 @@ export const products = [
     "name": "Dumbbell Set (20kg)",
     "price": 49.99,
     "description": "A durable and adjustable dumbbell set for strength training.",
-    "image": "/images/products/1.png",
+    "image": "https://pngimg.com/uploads/dumbbell/dumbbell_PNG16411.png",
     "category": "Strength ",
     "rating": 4.5,
     "abbreviation": 'GG'
@@ -14,7 +14,7 @@ export const products = [
     "name": "Treadmill (Folding)",
     "price": 699.99,
     "description": "High-performance folding treadmill for home cardio workouts.",
-    "image": "/images/products/2.png",
+    "image": "https://pngimg.com/uploads/treadmill/treadmill_PNG60.png",
     "category": "Cardio ",
     "rating": 4.7
   },
@@ -23,7 +23,7 @@ export const products = [
     "name": "Yoga Mat (Non-Slip)",
     "price": 19.99,
     "description": "Eco-friendly yoga mat with non-slip surface for safe practice.",
-    "image": "/images/products/3.png",
+    "image": "https://www.pikpng.com/pngl/b/513-5136705_yoga-mat-png-exercise-mat-clipart.png",
     "category": "Accessories",
     "rating": 4.6
   },
@@ -32,7 +32,7 @@ export const products = [
     "name": "Resistance Band Set",
     "price": 14.99,
     "description": "Set of resistance bands with varying levels for a versatile workout.",
-    "image": "/images/products/4.jpg",
+    "image": "https://proteinsource.ca/wp-content/uploads/2020/10/TPE-resistance-bands-set-of-11-600x600.jpg",
     "category": "Strength ",
     "rating": 4.4
   },
@@ -41,7 +41,7 @@ export const products = [
     "name": "Kettlebell (10kg)",
     "price": 29.99,
     "description": "High-quality kettlebell for functional and strength training exercises.",
-    "image": "/images/products/5.jpg",
+    "image": "https://samsfitness.com.au/wp-content/uploads/2022/02/powermaxx-kettlebells-category-600x600.jpg",
     "category": "Strength ",
     "rating": 4.6
   },
@@ -50,7 +50,7 @@ export const products = [
     "name": "Pull-Up Bar",
     "price": 39.99,
     "description": "Doorway pull-up bar for upper body strength training.",
-    "image": "/images/products/6.webp",
+    "image": "https://www.portablepullupbars.com/wp-content/uploads/2022/04/ceayun-pull-up-bar-dimensions-portable-pull-up-bars-600x600.jpg",
     "category": "Strength ",
     "rating": 4.5
   },
@@ -59,7 +59,7 @@ export const products = [
     "name": "Foam Roller",
     "price": 24.99,
     "description": "Durable foam roller for muscle recovery and mobility exercises.",
-    "image": "/images/products/7.webp",
+    "image": "https://images.hellomagazine.com/horizon/original_aspect_ratio/423f5ecbe28f-amazon-foam-roller-z.jpg",
     "category": "Accessories",
     "rating": 4.6
   },
@@ -68,7 +68,7 @@ export const products = [
     "name": "Spin Bike",
     "price": 299.99,
     "description": "Compact spin bike with adjustable resistance for home cardio workouts.",
-    "image": "/images/products/8.jpg",
+    "image": "https://tse2.mm.bing.net/th?id=OIP.kbkTIxYTb2EIpaF_TatwPAHaHa&pid=Api&P=0&h=180",
     "category": "Cardio ",
     "rating": 4.7
   },
@@ -77,7 +77,7 @@ export const products = [
     "name": "Adjustable Weight Bench",
     "price": 89.99,
     "description": "Adjustable weight bench for versatile strength training exercises.",
-    "image": "/images/products/9.webp",
+    "image": "https://i5.walmartimages.com/asr/e9ceef9d-0023-43be-b495-aea36927b63b.152562ad44e83e72c3de747a151ed3ce.jpeg",
     "category": "Strength ",
     "rating": 4.8
   },
@@ -86,7 +86,7 @@ export const products = [
     "name": "Jump Rope",
     "price": 9.99,
     "description": "Durable jump rope for cardio and endurance workouts.",
-    "image": "/images/products/10.webp",
+    "image": "https://cdn.shopify.com/s/files/1/0406/7174/0056/products/rope-master6_600x.jpg?v=1658152898",
     "category": "Accessories",
     "rating": 4.5
   },
@@ -95,7 +95,7 @@ export const products = [
     "name": "Adjustable Barbell Set",
     "price": 99.99,
     "description": "Customizable barbell set for strength training.",
-    "image": "/images/products/11.jpeg",
+    "image": "https://www.pinnaclefitness.org.uk/wp-content/uploads/2020/10/8C81078C-AFDC-492D-B075-C1D431BF6CF5-scaled.jpeg",
     "category": "Accessories",
     "rating": 4.8
   },
@@ -104,7 +104,7 @@ export const products = [
     "name": "Punching Bag (Heavy Duty)",
     "price": 149.99,
     "description": "Durable punching bag for boxing, MMA, and cardio training.",
-    "image": "/images/products/12.webp",
+    "image": "https://i5.walmartimages.com/asr/ce435e17-b11d-4d62-a168-9498f1861f7a.45ada20e0b03ab9cbcc747b8b85594fb.jpeg",
     "category": "Accessories",
     "rating": 4.7
   },
@@ -113,7 +113,7 @@ export const products = [
     "name": "Exercise Ball",
     "price": 19.99,
     "description": "Anti-burst exercise ball for stability and core strengthening workouts.",
-    "image": "",
+    "image": "https://i5.walmartimages.com/asr/c1a0fc9f-e59d-4cc9-bbca-e343414c9ce8.6188bcdea1dd636ee36d74c34a1f63aa.jpeg",
     "category": "Accessories",
     "rating": 4.5
   },
