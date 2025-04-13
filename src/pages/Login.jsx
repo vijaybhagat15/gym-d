@@ -40,14 +40,15 @@ function Moon() {
   };
 
   return (
-    <div className='bg-gradient-to-t from-transparent to-black' >              {/* Hero Section */}
+    <div className='' > 
+                 {/* Hero Section */}
         <div className=" border-b-2 text-white "style={{ backgroundImage: "url('/images/bg.jpg')" }}>
-<div className="relative w-full h-[5vh] sm:h-[10vh] overflow-hidden">
-  <div className="relative z-10 flex items-center justify-center w-full h-full bg-black bg-opacity-30">
-    <h1 className="text-xl sm:text-5xl font-bold font-serif text-white">Login Page</h1>
-  </div>
-</div>
-</div>
+            <div className="relative w-full h-[5vh] sm:h-[10vh] overflow-hidden">
+              <div className="relative z-10 flex items-center justify-center w-full h-full bg-black bg-opacity-30">
+                <h1 className="text-xl sm:text-5xl font-bold font-serif text-white">Login Page</h1>
+              </div>
+            </div>
+        </div>
     <div className="h-full w-full flex items-center justify-center">
 
       {/* Main container */}

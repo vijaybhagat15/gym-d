@@ -54,22 +54,15 @@ export default function SignUp() {
       </div>
     </div>
   </div>
-    <div className="h-full w-full relative flex items-center justify-center bg-gray-300">
-      {/* Background Video */}
-      <div className="absolute inset-0 overflow-hidden">
-        <video autoPlay loop muted className="w-full h-full object-cover">
-          <source src="\videos\your-background-video.mp4.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
+    <div className="h-full w-full relative flex items-center justify-center ">
       <div className='lg:grid lg:grid-cols-2'>
       <div className="hidden lg:flex items-center justify-center  ">
           <img
-            src="https://img.freepik.com/premium-vector/black-gym-logo-man-woman-white-background_1144471-10286.jpg?w=740"
+            src="images/signup_vector.jpg"
             alt="Login"
             className="max-w-md max-h-md rounded-3xl"
           />
-        </div>
+      </div>
       {/* Sign Up Section */}
       <div className="relative z-10 flex flex-col lg:flex-row items-center w-full max-w-6xl px-4">
         <div className="w-full  bg-black  p-4 px-14 rounded-3xl shadow-lg border border-gray-500 mx-auto">
