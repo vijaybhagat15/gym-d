@@ -1,111 +1,57 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { products } from "../data/products";
 import { FaStar, FaStarHalfAlt, FaRegStar, FaHeart } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, toggleWishlist } from "../redux/slices/productslice";
 
-const GymFitnessSection = () => {
-    // Filter logic: Get top 3 products of each category by highest ratings
-    const getTopProductsByCategory = (products) => {
-      // Group products by category
-      const groupedByCategory = products.reduce((acc, product) => {
-        if (!acc[product.category]) {
-          acc[product.category] = [];
-        }
-        acc[product.category].push(product);
-        return acc;
-      }, {});
-  
-      // Sort each category by rating (highest first) and take top 3
-      const topProducts = Object.values(groupedByCategory).flatMap((categoryProducts) =>
-        categoryProducts
-          .sort((a, b) => b.rating - a.rating) // Sort by rating (descending)
-          .slice(0, 3) // Take top 3
-      );
-  
-      return topProducts;
-    };
-  
-    // Get the filtered products
-    const filteredProducts = getTopProductsByCategory(products);
-    const navigate = useNavigate();
-  
+const TopRatedProducts = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const scrollContainerRef = useRef(null);
 
-  // Duplicate the product list for infinite scrolling
-  const duplicatedProducts = [...products, ...products];
+  const wishlist = useSelector((state) => state.products.wishlist);
 
-  // State for cart and wishlist with localStorage initialization
-  const [cart, setCart] = useState(() => {
-    const savedCart = localStorage.getItem("cart");
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
+  const getTopProductsByCategory = (products) => {
+    const grouped = products.reduce((acc, product) => {
+      acc[product.category] = acc[product.category] || [];
+      acc[product.category].push(product);
+      return acc;
+    }, {});
+    return Object.values(grouped)
+      .flatMap((categoryProducts) =>
+        categoryProducts.sort((a, b) => b.rating - a.rating).slice(0, 3)
+      );
+  };
 
-  const [wishlist, setWishlist] = useState(() => {
-    const savedWishlist = localStorage.getItem("wishlist");
-    return savedWishlist ? JSON.parse(savedWishlist) : [];
-  });
+  const filteredProducts = getTopProductsByCategory(products);
 
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
-
-  useEffect(() => {
-    localStorage.setItem("wishlist", JSON.stringify(wishlist));
-  }, [wishlist]);
-
-  // Infinite auto-scroll effect
   useEffect(() => {
     const interval = setInterval(() => {
       if (scrollContainerRef.current) {
-        const scrollAmount = scrollContainerRef.current.clientWidth * 0.8;
-        scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+        const container = scrollContainerRef.current;
+        const scrollAmount = container.clientWidth * 0.8;
 
-        // Reset scroll position when reaching the middle of duplicated products
-        if (scrollContainerRef.current.scrollLeft >= scrollContainerRef.current.scrollWidth / 2) {
-          scrollContainerRef.current.scrollTo({ left: 0, behavior: "auto" });
+        if (container.scrollLeft + container.clientWidth >= container.scrollWidth) {
+          container.scrollTo({ left: 0, behavior: "auto" });
+        } else {
+          container.scrollBy({ left: scrollAmount, behavior: "smooth" });
         }
       }
-    }, 2000);
+    }, 6000);
 
     return () => clearInterval(interval);
   }, []);
 
-  // Manual scroll handlers
-  const scrollLeft = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: -250, behavior: "smooth" });
-    }
-  };
-
-  const scrollRight = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: 250, behavior: "smooth" });
-    }
-  };
-
-  // Handlers for cart & wishlist
   const handleAddToCart = (product, e) => {
     e.stopPropagation();
-    setCart((prevCart) => {
-      const existingItem = prevCart.find((item) => item.id === product.id);
-      if (existingItem) {
-        return prevCart.map((item) =>
-          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-        );
-      }
-      return [...prevCart, { ...product, quantity: 1 }];
-    });
+    dispatch(addToCart(product));
     alert(`${product.name} added to cart!`);
   };
 
-  const handleAddToWishlist = (product, e) => {
+  const handleToggleWishlist = (product, e) => {
     e.stopPropagation();
-    setWishlist((prevWishlist) => {
-      if (!prevWishlist.find((item) => item.id === product.id)) {
-        return [...prevWishlist, product];
-      }
-      return prevWishlist.filter((item) => item.id !== product.id);
-    });
+    dispatch(toggleWishlist(product));
   };
 
   const handleCardClick = (productId) => {
@@ -116,48 +62,41 @@ const GymFitnessSection = () => {
     <div className="py-8">
       <h2 className="text-3xl font-sans font-bold text-center mb-6">Top Rated Products</h2>
 
-      {/* Buttons for manual navigation */} 
-      <div className=" justify-center gap-4 mb-4 hidden">
-        <button
-          onClick={scrollLeft}
-          className="bg-gray-300 px-4 py-2 rounded-lg text-black hover:bg-gray-400"
-        >
-          ◀ Prev
-        </button>
-        <button
-          onClick={scrollRight}
-          className="bg-gray-300 px-4 py-2 rounded-lg text-black hover:bg-gray-400"
-        >
-          Next ▶
-        </button>
-      </div>
-
-      <div className="overflow-hidden scroll-smooth">
+      <div className="overflow-hidden">
         <div
           ref={scrollContainerRef}
-          className="flex gap-6 px-4 overflow-x-scroll whitespace-nowrap no-scrollbar"
+          className="flex gap-6 px-4 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory"
         >
           {filteredProducts.map((product, index) => (
             <div
               key={index}
-              className="bg-accent min-w-60 shadow-md rounded-xl p-4 hover:shadow-2xl hover:scale-105 transition-transform h-auto relative"
+              className="snap-start bg-accent min-w-[75%] sm:min-w-[250px] md:min-w-[300px] shadow-md rounded-xl p-4 hover:shadow-2xl hover:scale-105 transition-transform duration-300 h-auto relative cursor-pointer"
               onClick={() => handleCardClick(product.id)}
             >
-              <div className="absolute inset-0 md:bg-gradient-to-t from-indigo-300 to-transparent opacity-50 hover:opacity-0 transition-opacity duration-300"></div>
-              <div className="w-52 h-52 aspect-w-1 aspect-h-1 rounded-md overflow-hidden">
-                <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-indigo-300 to-transparent opacity-100 md:opacity-50 md:hover:opacity-0 transition-opacity duration-300 rounded-xl"></div>
+
+              <div className="relative w-full h-52 rounded-md overflow-hidden">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-full object-contain rounded-md"
+                />
                 <button
-                  className={`absolute top-1 right-1 rounded-full p-1 transition-colors ${
-                    wishlist.some((item) => item.id === product.id) ? "text-red-500" : "text-gray-400"
+                  className={`absolute top-1 right-1 rounded-full p-1 transition-colors z-10 ${
+                    wishlist.some((item) => item.id === product.id)
+                      ? "text-red-500"
+                      : "text-gray-400"
                   }`}
-                  onClick={(e) => handleAddToWishlist(product, e)}
+                  onClick={(e) => handleToggleWishlist(product, e)}
                 >
                   <FaHeart size={15} />
                 </button>
               </div>
+
               <h3 className="mt-2 text-base font-semibold font-serif text-gray-800">{product.name}</h3>
               <p className="text-gray-600">${product.price.toFixed(2)}</p>
-              <div className="flex items-center">
+
+              <div className="flex items-center mb-1">
                 {Array(5)
                   .fill()
                   .map((_, i) => (
@@ -172,8 +111,9 @@ const GymFitnessSection = () => {
                     </span>
                   ))}
               </div>
+
               <button
-                className="absolute bottom-2 right-2 hover:bg-gradient-to-t bg-gradient-to-b from-blue-500 to-purple-500 text-white text-[10px] font-medium p-2 rounded-lg hover:bg-white hover:text-orange transition-all duration-500 border-2 border-white font-sans"
+                className="absolute bottom-2 right-2 bg-gradient-to-b from-blue-500 to-purple-500 text-white text-[10px] font-medium p-2 rounded-lg hover:bg-white hover:text-orange-500 border-2 border-white font-sans transition-all duration-500"
                 onClick={(e) => handleAddToCart(product, e)}
               >
                 Add to Cart
@@ -186,4 +126,4 @@ const GymFitnessSection = () => {
   );
 };
 
-export default GymFitnessSection;
+export default TopRatedProducts;

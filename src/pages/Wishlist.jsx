@@ -1,74 +1,40 @@
-import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaStar, FaStarHalfAlt, FaRegStar, FaHeart } from 'react-icons/fa';
+import { useSelector, useDispatch } from 'react-redux';
+import {addToCart,toggleWishlist,} from '../redux/slices/productslice';
 
 export default function Wishlist() {
-  const [wishlist, setWishlist] = useState(() => {
-    const savedWishlist = localStorage.getItem('wishlist');
-    return savedWishlist ? JSON.parse(savedWishlist) : [];
-  });
-
-  const [wishlistCount, setWishlistCount] = useState(() => {
-    const savedWishlistCount = localStorage.getItem('wishlistCount');
-    return savedWishlistCount ? JSON.parse(savedWishlistCount) : wishlist.length;
-  });
-
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    localStorage.setItem('wishlist', JSON.stringify(wishlist));
-    const count = wishlist.length;
-    setWishlistCount(count);
-    localStorage.setItem('wishlistCount', JSON.stringify(count)); // Store wishlist count in local storage
-  }, [wishlist]);
-
-  const handleRemoveFromWishlist = (productId) => {
-    const updatedWishlist = wishlist.filter((item) => item.id !== productId);
-    setWishlist(updatedWishlist);
-  };
-  const [cart, setCart] = useState(() => {
-    const savedCart = localStorage.getItem('cart');
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
-
- 
-  useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart));
-  }, [cart]);
-
-
+  // ✅ Access wishlist and cart from Redux state
+  const wishlist = useSelector((state) => state.products.wishlist);
+  const wishlistCount = wishlist.length;
 
   const handleAddToCart = (product, e) => {
-    e.stopPropagation(); // Prevent unwanted navigation
-    setCart((prevCart) => {
-      const existingItem = prevCart.find((item) => item.id === product.id);
-      if (existingItem) {
-        return prevCart.map((item) =>
-          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-        );
-      }
-      return [...prevCart, { ...product, quantity: 1 }];
-    });
+    e.stopPropagation();
+    dispatch(addToCart(product));
     alert(`${product.name} added to cart!`);
   };
 
+  const handleRemoveFromWishlist = (product, e) => {
+    e.stopPropagation();
+    dispatch(toggleWishlist(product));
+  };
+
   const handleCardClick = (productId) => {
-    navigate(`/product/${productId}`);
+    navigate(`/products/${productId}`);
   };
 
   return (
     <section className="min-h-screen pb-4 font-sans">
-        {/* Hero Section */}
-        <div className=" border-b-2 text-white "style={{ backgroundImage: "url('/images/bg.jpg')" }}>
-          <div className="relative w-full h-[5vh] sm:h-[10vh] overflow-hidden">
-            <div className="relative z-10 flex items-center justify-center w-full h-full bg-black bg-opacity-30">
-              <h1 className="text-xl sm:text-5xl font-bold font-serif text-white">Your Wishlist Items</h1>
-            </div>
-          </div>
-        </div>
+      {/* Hero Section */}
+      <div className='mx-auto flex text-center justify-center text-3xl border-2 border-indigo-200 bg-indigo-100'>Your Wishlist Items</div>
+
       <p className="text-center text-white font-sans bg-indigo-500">
         Total items in wishlist: {wishlistCount}
       </p>
+
       <div className="container mx-auto py-2 px-4 sm:py-20 sm:px-14">
         {wishlist.length === 0 ? (
           <p className="text-center text-gray-600 font-sans">
@@ -90,10 +56,7 @@ export default function Wishlist() {
                   />
                   <button
                     className="absolute top-1 right-1 rounded-full p-1 text-red-500 hover:text-red-700 transition"
-                    onClick={(e) => {
-                      e.stopPropagation(); // Prevent navigation on remove click
-                      handleRemoveFromWishlist(product.id);
-                    }}
+                    onClick={(e) => handleRemoveFromWishlist(product, e)}
                   >
                     <FaHeart size={15} />
                   </button>
@@ -103,9 +66,7 @@ export default function Wishlist() {
                   {product.name}
                 </h3>
                 <p className="text-gray-600 font-sans">${product.price.toFixed(2)}</p>
-                <p className="text-gray-500 text-xs mb-2 font-sans">
-                  {product.description}
-                </p>
+                <p className="text-gray-500 text-xs mb-2 font-sans">{product.description}</p>
 
                 <div className="flex items-center mb-2">
                   {Array(5)
@@ -122,12 +83,13 @@ export default function Wishlist() {
                       </span>
                     ))}
                 </div>
+
                 <button
-                className="absolute bottom-2 right-2 hover:bg-gradient-to-t bg-gradient-to-b from-blue-500 to-purple-500 text-white text-[10px] font-medium p-2 rounded-lg hover:bg-white hover:text-orange transition-all duration-500 border-2 border-white font-sans"
-                onClick={(e) => handleAddToCart(product, e)}
-              >
-                Add to Cart
-              </button>
+                  className="absolute bottom-2 right-2 hover:bg-gradient-to-t bg-gradient-to-b from-blue-500 to-purple-500 text-white text-[10px] font-medium p-2 rounded-lg hover:bg-white hover:text-orange transition-all duration-500 border-2 border-white font-sans"
+                  onClick={(e) => handleAddToCart(product, e)}
+                >
+                  Add to Cart
+                </button>
               </div>
             ))}
           </div>

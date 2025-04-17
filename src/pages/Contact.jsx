@@ -3,14 +3,7 @@ import { FaEnvelope, FaPhoneAlt, FaUser, FaPaperPlane } from "react-icons/fa";
 export default function Contact() {
   return (
     <>
-      {/* Header Section */}
-        <div className=" border-b-2 text-white "style={{ backgroundImage: "url('/images/bg.jpg')" }}>
-        <div className="relative w-full h-[5vh] sm:h-[10vh] overflow-hidden">
-          <div className="relative z-10 flex items-center justify-center w-full h-full bg-black bg-opacity-30">
-            <h1 className="text-xl sm:text-5xl font-bold text-white font-serif">Customer Care</h1>
-          </div>
-        </div>
-      </div>
+        <div className='mx-auto flex text-center justify-center text-3xl border-2 border-indigo-200 bg-indigo-100'>Contact Us</div>
 
       {/* Main Content Section */}
       <div className="max-w-screen-lg mx-auto p-8 space-y-12 font-sans">

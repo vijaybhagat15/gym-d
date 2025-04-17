@@ -1,6 +1,4 @@
-import { div } from "framer-motion/client"
 import AboutHorizontalscroll from "../components/AboutHorizontalscroll";
-import React from "react";
 const AboutUs = () => {
   const customers = [
     { id: 1, image: "https://i.pravatar.cc/150?u=customer1", name: "Customer 1" },
@@ -18,14 +16,8 @@ const AboutUs = () => {
   ];
   return (
     <div className=" text-black border-y-2 border-white">
-              {/* Hero Section */}
-        <div className=" border-b-2 text-white "style={{ backgroundImage: "url('/images/bg.jpg')" }}>
-          <div className="relative w-full h-[5vh] sm:h-[10vh] overflow-hidden">
-            <div className="relative z-10 flex items-center justify-center w-full h-full bg-black bg-opacity-30">
-              <h1 className="text-xl sm:text-5xl font-bold  text-white font-serif">About Us</h1>
-            </div>
-          </div>
-        </div>
+              <div className='mx-auto flex text-center justify-center text-3xl border-2 border-indigo-200 bg-indigo-100'>About Us</div>
+
       <AboutHorizontalscroll/>
     <div >
       {/* Content Section */}

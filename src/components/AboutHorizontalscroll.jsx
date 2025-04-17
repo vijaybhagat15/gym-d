@@ -1,4 +1,3 @@
-import React from "react";
 
 // Replace products array with human images
 const people = [

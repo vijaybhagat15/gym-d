@@ -1,18 +1,19 @@
 import HorizontalScroll from "../components/HorizontalScroll";
-import Carousel from "../components/Carosule";
 import Features from "../components/Features";
 import GymFitnessSection from "../components/GymFitnessSection";
 import BlogPosts from "../components/Blogposts";
 import TopRatedProducts from "../components/TopRatedProducts";
+import Section1 from "../components/Section1";
 const Home = () => {
   return (
     <div>
     <HorizontalScroll/>
-    <Carousel/>
+    <Section1/>
     <Features/>
     <GymFitnessSection/>
     <BlogPosts/>
     <TopRatedProducts/>
+
     </div>
   );
 };

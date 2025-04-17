@@ -1,27 +1,30 @@
-import React from "react";
-import { products } from "../data/products"; // Import products data
+import { products } from "../data/products";
 
 const HorizontalScroll = () => {
   return (
-    <div className="flex justify-center bg-gray-200">
-      <div className="flex overflow-x-auto space-x-4 p-1 scrollbar-hide scroll-smooth">
+    <div className="w-full bg-gray-200 py-2">
+      <div className="flex overflow-x-auto space-x-4 px-4 scrollbar-hide scroll-smooth">
         {products.map((product) => (
-          <div key={product.id} className="flex flex-col items-center flex-shrink-0 hover:scale-110 transform transition duration-300">
-            {/* Gradient Border */}
-            <div
-              className="sm:w-[90px] sm:h-[90px] w-[50px] h-[50px] rounded-full bg-gradient-to-r from-pink-500 via-orange-500 to-purple-500 p-[2px]"
-            >
-              {/* Inner Circle */}
-              <div className="rounded-full bg-white overflow-hidden w-full h-full z-0">
+          <div
+            key={product.id}
+            className="flex flex-col items-center flex-shrink-0 hover:scale-105 transform transition duration-300"
+          >
+            {/* Gradient Border Circle */}
+            <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-r from-pink-500 via-orange-500 to-purple-500 p-[2px]">
+              {/* Inner Image Circle */}
+              <div className="rounded-full bg-white overflow-hidden w-full h-full flex items-center justify-center">
                 <img
-                  src={product.image} // Use product image from products.js
-                  alt={product.name} // Use product name as alt text
+                  src={product.image}
+                  alt={product.name}
                   className="object-cover w-full h-full"
                 />
               </div>
             </div>
-            {/* Title */}
-            <p className="text-sm mt-1 text-gray-900">{product.name}</p> {/* Display product name */}
+
+            {/* Product Name */}
+            <p className="text-xs sm:text-sm mt-1 text-gray-900 text-center max-w-[5rem] truncate">
+              {product.name}
+            </p>
           </div>
         ))}
       </div>

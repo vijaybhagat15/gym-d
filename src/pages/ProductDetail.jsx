@@ -2,7 +2,8 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { products } from '../data/products';
 import { FaHeart, FaRegHeart, FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
-import React from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleWishlist,addToCart } from '../redux/slices/productslice';
 export default function ProductDetail() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
@@ -14,53 +15,25 @@ export default function ProductDetail() {
     setLoading(false);
   }, [id]);
 
-  const [cart, setCart] = useState(() => {
-    const savedCart = localStorage.getItem('cart');
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
-
-  const [wishlist, setWishlist] = useState(() => {
-    const savedWishlist = localStorage.getItem('wishlist');
-    return savedWishlist ? JSON.parse(savedWishlist) : [];
-  });
-
-  useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart));
-  }, [cart]);
-
-  useEffect(() => {
-    localStorage.setItem('wishlist', JSON.stringify(wishlist));
-  }, [wishlist]);
-
+  const dispatch = useDispatch();
+  const wishlist = useSelector((state) => state.products.wishlist);
+  
   const handleAddToCart = (product, e) => {
     e.stopPropagation();
-    setCart((prevCart) => {
-      const existingItem = prevCart.find((item) => item.id === product.id);
-      if (existingItem) {
-        return prevCart.map((item) =>
-          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-        );
-      }
-      return [...prevCart, { ...product, quantity: 1 }];
-    });
+    dispatch(addToCart(product));
     alert(`${product.name} added to cart!`);
   };
 
   const handleAddToWishlist = (product, e) => {
     e.stopPropagation();
-    if (wishlist.some((item) => item.id === product.id)) {
-      setWishlist((prevWishlist) =>
-        prevWishlist.filter((item) => item.id !== product.id)
-      );
-      alert(`${product.name} removed from wishlist.`);
-    } else {
-      setWishlist((prevWishlist) => [...prevWishlist, product]);
-      alert(`${product.name} added to wishlist.`);
-    }
+    dispatch(toggleWishlist(product));
+    const exists = wishlist.some((item) => item.id === product.id);
+    alert(`${product.name} ${exists ? 'removed from' : 'added to'} wishlist.`);
   };
-
+  
+  
   const handleCardClick = (productId) => {
-    window.location.href = `/product/${productId}`;
+    window.location.href = `/products/${productId}`;
   };
 
   const relatedProducts = products.filter(
@@ -77,7 +50,7 @@ export default function ProductDetail() {
 
   return (
     <div className=" mx-auto py-10 px-4 sm:px-8 lg:px-12 font-sans  border-b-2 border-white ">
-      <div className="flex flex-col lg:flex-row lg:items-start gap-12 lg:gap-16 rounded-3xl shadow-lg p-6 sm:p-8 bg-black text-white ">
+      <div className="flex flex-col lg:flex-row lg:items-start gap-12 lg:gap-16 rounded-3xl shadow-lg p-6 sm:p-8 bg-gray-200 text-black ">
         {/* Product Image */}
         <div className="lg:w-1/2 w-full bg-white p-4 rounded-3xl shadow-lg relative">
           <img
@@ -97,11 +70,11 @@ export default function ProductDetail() {
         <div className="lg:w-1/2 w-full flex flex-col">
           <h1 className="text-2xl sm:text-3xl font-serif font-bold  mb-4">{product.name}</h1>
           <p className="text-xl font-serif font-semibold text-green-600 mb-4">${product.price.toFixed(2)}</p>
-          <p className="text-gray-200 text-base sm:text-lg mb-6 leading-relaxed font-sans">{product.description}</p>
+          <p className="text-black text-base sm:text-lg mb-6 leading-relaxed font-sans">{product.description}</p>
           {/* Product Specifications */}
           <div className="mb-6">
-            <h2 className="text-lg font-semibold text-white mb-2 font-serif">Specifications</h2>
-            <ul className="list-disc pl-6 text-gray-200 font-sans">
+            <h2 className="text-lg font-semibold  mb-2 font-serif">Specifications</h2>
+            <ul className="list-disc pl-6 text-black font-sans">
               {product.specifications && product.specifications.length > 0 ? (
                 product.specifications.map((spec, index) => (
                   <li key={index}>{spec}</li>
@@ -114,23 +87,23 @@ export default function ProductDetail() {
 
           {/* Product Details */}
           <div className="mb-6">
-            <h2 className="text-lg font-semibold text-white mb-2 font-serif">Details</h2>
-            <p className="text-gray-200 font-sans">
+            <h2 className="text-lg font-semibold  mb-2 font-serif">Details</h2>
+            <p className="text-black font-sans">
               {product.details || 'No additional details available'}
             </p>
           </div>
 
           {/* Shipping Info */}
           <div className="mb-6">
-            <h2 className="text-lg font-semibold text-white mb-2 font-serif">Shipping Information</h2>
-            <p className="text-gray-200 font-sans">
+            <h2 className="text-lg font-semibold  mb-2 font-serif">Shipping Information</h2>
+            <p className="text-black font-sans">
               {product.shipping || 'No shipping information available'}
             </p>
           </div>
           <div className="mt-auto">
             <button
               onClick={(e) => handleAddToCart(product, e)}
-              className=" hover:bg-gradient-to-t bg-gradient-to-b from-blue-500 to-purple-500 text-white py-3 px-6 rounded-md shadow-md  focus:outline-none focus:ring-2 focus:ring-orange-500 transition-colors duration-300 w-full sm:w-auto font-sans font-bold"
+              className=" hover:bg-gradient-to-t bg-gradient-to-b from-blue-500 to-purple-500  py-3 px-6 rounded-md shadow-md  focus:outline-none focus:ring-2 focus:ring-orange-500 transition-colors duration-300 w-full sm:w-auto font-sans font-bold"
             >
               Add to Cart
             </button>
@@ -184,7 +157,7 @@ export default function ProductDetail() {
                   ))}
               </div>
               <button
-                className="absolute bottom-2 right-2 hover:bg-gradient-to-t bg-gradient-to-b from-blue-500 to-purple-500 text-white text-[10px] font-medium p-2 rounded-lg hover:bg-white hover:text-orange transition-all duration-500 border-2 border-white font-sans"
+                className="absolute bottom-2 right-2 hover:bg-gradient-to-t bg-gradient-to-b from-blue-500 to-purple-500  text-[10px] font-medium p-2 rounded-lg hover:bg-white hover:text-orange transition-all duration-500 border-2 border-white font-sans"
                 onClick={(e) => handleAddToCart(product, e)}
               >
                 Add to Cart

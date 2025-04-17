@@ -1,9 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaTrash, FaMinus, FaPlus } from 'react-icons/fa';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { removeFromCart, addToCart } from '../redux/slices/productslice';
+
 export default function Cart() {
+  const cart = useSelector((state) => state.products.cart);
+  const dispatch = useDispatch();
+  
+
     const calculateTaxes = () => {
         const taxRate = 0.1; // 10% tax rate
         return calculateTotal() * taxRate;
@@ -13,42 +20,18 @@ export default function Cart() {
         const couponDiscount = 15; // Flat $15 discount
         return cart.length > 0 ? couponDiscount : 0;
     };
-
-    const [cart, setCart] = useState(() => {
-        const savedCart = localStorage.getItem('cart');
-        return savedCart ? JSON.parse(savedCart) : [];
-    });
-
-    const [cartCount, setCartCount] = useState(() => {
-        const savedCartCount = localStorage.getItem('cartCount');
-        return savedCartCount ? parseInt(savedCartCount, 10) : 0;
-    });
-
     const [searchQuery, setSearchQuery] = useState('');
     const [filters, setFilters] = useState({ price: [0, 500], category: [], rating: 0 });
     const navigate = useNavigate();
 
-    useEffect(() => {
-        localStorage.setItem('cart', JSON.stringify(cart));
-        const totalQuantity = cart.reduce((count, item) => count + item.quantity, 0);
-        setCartCount(totalQuantity);
-    }, [cart]);
-
-    useEffect(() => {
-        localStorage.setItem('cartCount', cartCount);
-    }, [cartCount]);
-
     const handleRemoveItem = (id) => {
-        const updatedCart = cart.filter((item) => item.id !== id);
-        setCart(updatedCart);
+      dispatch(removeFromCart(id));
     };
+    
 
     const handleUpdateQuantity = (id, quantity) => {
-        if (quantity < 1) return;
-        const updatedCart = cart.map((item) =>
-            item.id === id ? { ...item, quantity } : item
-        );
-        setCart(updatedCart);
+      if (quantity < 1) return;
+      dispatch(addToCart({ id, quantity }));
     };
 
     const calculateTotal = () =>
@@ -107,14 +90,8 @@ export default function Cart() {
         <div className="min-h-screen b-6  bg-white font-sans max-w-full">
             <div className=" mx-auto">
                 {/* Header Section */}
-        {/* Hero Section */}
-        <div className=" border-b-2 text-white "style={{ backgroundImage: "url('/images/bg.jpg')" }}>
-          <div className="relative w-full h-[5vh] sm:h-[10vh] overflow-hidden">
-            <div className="relative z-10 flex items-center justify-center w-full h-full bg-black bg-opacity-30">
-              <h1 className="text-xl sm:text-5xl font-bold font-serif text-white">Wour Cart</h1>
-            </div>
-          </div>
-        </div>
+                <div className='mx-auto flex text-center justify-center text-3xl border-2 border-indigo-200 bg-indigo-100'>Your Cart</div>
+
         <div className="col-span-1 flex flex-col space-y-1 min-w-32 lg:hidden border-2 border-x-gray-200 rounded-lg px-3 py-1 text-white h-min  bg-indigo-500 text-xs">
           <div className="flex flex-col ">
             <input
