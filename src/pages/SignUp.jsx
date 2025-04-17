@@ -46,23 +46,23 @@ export default function SignUp() {
       <div className='mx-auto flex text-center justify-center text-3xl border-2 border-indigo-200 bg-indigo-100'>SignUp</div>
 
 
-      <div className="h-full w-full relative flex items-center justify-center">
+      <div className="h-full w-full relative flex items-center justify-center p-2">
         <div className='lg:grid lg:grid-cols-2'>
           <div className="hidden lg:flex items-center justify-center">
             <img src="images/signup_vector.jpg" alt="Login" className="max-w-md max-h-md rounded-3xl" />
           </div>
 
           <div className="relative z-10 flex flex-col lg:flex-row items-center w-full max-w-6xl px-4">
-            <div className="w-full bg-black p-4 px-14 rounded-3xl shadow-lg border border-gray-500 mx-auto">
+            <div className="w-full bg-gray-900 p-4 px-14 rounded-3xl shadow-lg border border-gray-500 mx-auto">
               <form onSubmit={handleSubmit} className="space-y-3">
-                <h2 className="text-xl font-bold text-center text-white font-serif">Sign Up Here</h2>
+                <h2 className="text-xl font-bold text-center text-white">Sign Up Here</h2>
 
-                {error && <div className="text-red-400 text-center font-sans">{error}</div>}
-                {success && <div className="text-green-400 text-center font-sans">{success}</div>}
+                {error && <div className="text-red-400 text-center">{error}</div>}
+                {success && <div className="text-green-400 text-center">{success}</div>}
 
                 {['username', 'email', 'password', 'confirmPassword'].map((field) => (
                   <div key={field}>
-                    <label htmlFor={field} className="block text-gray-300 font-medium font-sans capitalize">
+                    <label htmlFor={field} className="block text-gray-300 font-medium capitalize">
                       {field.replace(/([A-Z])/g, ' $1')}
                     </label>
                     <input
@@ -71,7 +71,7 @@ export default function SignUp() {
                       name={field}
                       value={formData[field]}
                       onChange={handleInputChange}
-                      className="w-full px-3 py-1.5 mt-1 bg-gray-700 text-white rounded-xl focus:ring-2 focus:ring-orange-400 outline-none font-sans"
+                      className="w-full px-3 py-1.5 mt-1 bg-gray-700 text-white rounded-xl focus:ring-2 focus:ring-indigo-400 outline-none"
                       placeholder={`Enter your ${field.replace(/([A-Z])/g, ' $1').toLowerCase()}`}
                       required
                     />
@@ -80,7 +80,7 @@ export default function SignUp() {
 
                 <button
                   type="submit"
-                  className={`w-full py-2 rounded-xl bg-orange-400 text-black hover:bg-orange-600 transition font-sans ${
+                  className={`w-full py-2 rounded-xl bg-indigo-400 text-black hover:bg-indigo-600 transition ${
                     loading ? 'opacity-50 cursor-not-allowed' : ''
                   }`}
                   disabled={loading}
@@ -90,16 +90,9 @@ export default function SignUp() {
 
                 <div className="flex items-center my-2">
                   <div className="flex-grow h-px bg-gray-600"></div>
-                  <span className="px-2 text-gray-400 font-sans">OR</span>
+                  <span className="px-2 text-gray-400">OR</span>
                   <div className="flex-grow h-px bg-gray-600"></div>
                 </div>
-
-                <button className="flex items-center justify-center w-full py-1.5 mb-2 rounded-xl bg-blue-500 hover:bg-blue-600 text-white transition text-sm font-sans">
-                  Sign Up with Google
-                </button>
-                <button className="flex items-center justify-center w-full py-1.5 rounded-xl bg-blue-800 hover:bg-blue-900 text-white transition text-sm font-sans">
-                  Sign Up with Facebook
-                </button>
               </form>
             </div>
           </div>

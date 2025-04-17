@@ -26,7 +26,7 @@ const wishlistCount = wishlist.length;
   } = useSelector((state) => state.header);
 
   const isActive = (path) => location.pathname === path;
-  const isAuthenticated =true; //useSelector((state) => state.login.isAuth);
+  const isAuthenticated = useSelector((state) => state.login.isAuth);
   
   return (
     <header className="text-gray-900 bg-white top-0 sticky z-50 border-2 border-gray-300">
@@ -34,7 +34,7 @@ const wishlistCount = wishlist.length;
       <div className=" mx-auto py-2 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center ml-2 mr-auto">
-          <img src="logo.png" alt="Maison Flavour Logo" className="h-10 md:h-16" />
+          <img src="https://github.com/vijaybhagat15/gym-d/blob/main/public/logo.png?raw=true" alt="Maison Flavour Logo" className="h-10 md:h-16" />
           <div className="font-bold text-xl lg:text-2xl">MuscleMart</div>
         </Link>
           {/* Search Bar */}

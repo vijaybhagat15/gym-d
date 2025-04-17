@@ -53,7 +53,7 @@ function Sidebar() {
           {links.map(({ path, label }) => {
             const icons = {
               "/": FaHome,
-              "/products": FaBoxOpen,
+              "/product": FaBoxOpen,
               "/contact": FaPhoneAlt,
               "/About": FaInfoCircle,
             };

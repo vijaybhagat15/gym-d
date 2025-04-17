@@ -5,7 +5,7 @@ const Footer = () => {
         {/* Logo and Contact Info */}
         <div>
           <img
-            src="logo.png"
+            src="https://github.com/vijaybhagat15/gym-d/blob/main/public/logo.png?raw=true"
             alt="gym Logo"
             className="mb-2 w-40"
           />

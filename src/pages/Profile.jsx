@@ -87,21 +87,21 @@ export default function Profile() {
 
   return (
     <div>
-              <div className='mx-auto flex text-center justify-center text-3xl border-2 border-indigo-200 bg-indigo-100'>Your Profile</div>
+     <div className='mx-auto flex text-center justify-center text-3xl border-2 border-indigo-200 bg-indigo-100'>Your Profile</div>
 
-      <div className="min-h-screen font-sans flex justify-center py-5 text-black">
+      <div className="min-h-screen flex justify-center py-5 text-black bg-indigo-50">
         <div className="max-w-5xl w-full bg-white shadow-xl rounded-2xl overflow-hidden border-[1px] border-indigo-500 sm:flex h-min">
-          <div className="sm:w-1/3 flex justify-center sm:mb-auto m-2">
+          <div className="sm:w-1/3 flex justify-center sm:mb-auto m-auto p-2 ">
             <div className="w-40 h-40 sm:w-full sm:h-full overflow-hidden">
               <img src={profile.image} alt="Profile" className="w-full h-full object-contain rounded-2xl border-[1px] border-indigo-500" />
             </div>
           </div>
-          <div className="sm:w-2/3 p-6 max-w-3xl text-gray-900">
+          <div className="sm:w-2/3 p-6 max-w-3xl text-black">
             {profile.editable ? (
               <form onSubmit={handleUpdateProfile} className="space-y-4">
                 {['username', 'email', 'contactNumber', 'address'].map((field) => (
                   <div key={field}>
-                    <label htmlFor={field} className="block text-gray-900 font-medium capitalize font-serif">
+                    <label htmlFor={field} className="block text-black font-medium capitalize">
                       {field.replace('Number', ' Number')}
                     </label>
                     <input
@@ -115,7 +115,7 @@ export default function Profile() {
                   </div>
                 ))}
                 <div>
-                  <label htmlFor="profilePicture" className="block text-gray-900 font-medium font-serif">
+                  <label htmlFor="profilePicture" className="block text-black font-medium">
                     Profile Picture
                   </label>
                   <input
@@ -128,17 +128,17 @@ export default function Profile() {
                 </div>
                 <button
                   type="submit"
-                  className="px-3 py-2 m-4 text-white font-bold bg-green-600 rounded-lg hover:bg-white hover:text-green-600 transition-all duration-500 border-2 border-gray-300 font-sans"
+                  className="px-3 py-2 m-4 text-white font-bold bg-green-600 rounded-lg hover:bg-white hover:text-green-600 transition-all duration-500 border-2 border-gray-300"
                 >
                   Save Changes
                 </button>
               </form>
             ) : (
               <>
-                <h2 className="text-2xl font-semibold mb-4 font-serif">Account Details</h2>
+                <h2 className="text-2xl font-semibold mb-4">Account Details</h2>
                 {['username', 'email', 'contactNumber', 'address'].map((field) => (
                   <div key={field} className="mb-4">
-                    <label className="block font-medium text-gray-900 capitalize font-serif">
+                    <label className="block font-medium text-black capitalize">
                       {field.replace('Number', ' Number')}
                     </label>
                     <p className="bg-gray-200 px-4 py-2 rounded-lg">{profile.formData[field] || 'N/A'}</p>
@@ -146,7 +146,7 @@ export default function Profile() {
                 ))}
                 <button
                   onClick={() => dispatch(setEditable(true))}
-                  className="px-3 py-2 text-white font-bold bg-orange-500 rounded-lg hover:bg-white hover:text-orange-500 transition-all duration-500 border-2 border-gray-300 font-sans"
+                  className="px-3 py-2 text-white font-bold bg-orange-500 rounded-lg hover:bg-white hover:text-orange-500 transition-all duration-500 border-2 border-gray-300"
                 >
                   Edit Profile
                 </button>
@@ -154,7 +154,7 @@ export default function Profile() {
             )}
             <button
               onClick={handleLogout}
-              className="px-3 mt-4 mx-5 py-2 text-white font-bold bg-red-500 rounded-lg hover:bg-white hover:text-red-500 transition-all duration-500 border-2 border-gray-300 font-sans"
+              className="px-3 mt-4 mx-5 py-2 text-white font-bold bg-red-500 rounded-lg hover:bg-white hover:text-red-500 transition-all duration-500 border-2 border-gray-300"
             >
               Log Out
             </button>

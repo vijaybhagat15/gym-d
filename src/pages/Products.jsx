@@ -60,8 +60,6 @@ export default function Products() {
     dispatch(setFilters({ ...filters, category: updatedCategories }));
   };
 
-  // Since our products slice is responsible for updating filteredProducts when filters or searchQuery change,
-  // we don't need to manually recalculate here.
 
   return (
     <section className="min-h-screen py-b font-sans bg-white border-b-2 border-white w-full">
@@ -126,7 +124,7 @@ export default function Products() {
           {filteredProducts.map((product) => (
             <div
               key={product.id}
-              className="min-w-32 shadow-md rounded-lg p-4 hover:shadow-2xl hover:scale-105 transition-transform h-auto relative"
+              className="min-w-32 shadow-md rounded-lg p-6 hover:shadow-2xl hover:scale-105 transition-transform h-auto relative"
               onClick={() => handleCardClick(product.id)}
             >
               <div className="relative w-full aspect-w-1 aspect-h-1 rounded-md overflow-hidden">
@@ -177,7 +175,7 @@ export default function Products() {
             </div>
           ))}
         </div>
-        <div className="col-span-1 hidden lg:flex flex-col space-y-4 min-w-32 border-2 border-x-gray-100 rounded-lg p-3 text-white bg-indigo-500">
+        <div className="col-span-1 hidden lg:flex flex-col space-y-4 min-w-32 border-2 border-x-gray-100 rounded-lg p-3 text-white bg-indigo-500 max-h-[400px] top-20 sticky">
           <div className="flex flex-col space-y-2">
             <input
               type="text"

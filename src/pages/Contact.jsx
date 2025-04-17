@@ -3,86 +3,78 @@ import { FaEnvelope, FaPhoneAlt, FaUser, FaPaperPlane } from "react-icons/fa";
 export default function Contact() {
   return (
     <>
-        <div className='mx-auto flex text-center justify-center text-3xl border-2 border-indigo-200 bg-indigo-100'>Contact Us</div>
+      {/* Heading */}
+      <div className="mx-auto text-center text-xl md:text-3xl font-bold py-6 border-2 border-indigo-200 bg-indigo-100 w-full">
+        Contact Us
+      </div>
 
-      {/* Main Content Section */}
-      <div className="max-w-screen-lg mx-auto p-8 space-y-12 font-sans">
-        {/* Introduction Section */}
+      {/* Main Content */}
+      <div className="max-w-screen-xl mx-auto px-4 md:px-8 py-6 md:py-12 space-y-12">
+        {/* Intro */}
         <div className="text-center space-y-4">
-          <p className="text-gray-900">
-            At BarbellBase, we are committed to providing you with a seamless and enjoyable shopping experience. We strive to ensure the best possible service for our customers.
+          <p className="text-gray-900 text-sm md:text-base">
+            At MuscleMart, we are committed to providing you with a seamless and enjoyable shopping experience.
           </p>
         </div>
 
-        {/* Features Section */}
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Customer-Centric Approach */}
+        {/* Features */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-4">
             <img
-              src="\images\cus.avif"
+              src="/images/cus.avif"
               alt="Customer Support"
-              className="w-full rounded-lg shadow-md border-[1px] border-indigo-500"
+              className="w-full rounded-lg shadow-md border border-indigo-500"
             />
-            <h2 className="text-xl font-bold font-serif">Customer-Centric Approach:</h2>
+            <h2 className="text-xl md:text-2xl font-bold">Customer-Centric Approach:</h2>
             <p className="text-gray-900">
-              Your satisfaction is our top priority. We are dedicated to understanding and meeting your needs, offering personalized assistance whenever required.
+              Your satisfaction is our top priority.
             </p>
           </div>
 
-          {/* Continuous Improvement */}
           <div className="space-y-4">
             <img
-              src="\images\impro.jpg"
+              src="/images/impro.jpg"
               alt="Continuous Improvement"
-              className="w-full rounded-lg shadow-md border-[1px] border-indigo-500"
+              className="w-full rounded-lg shadow-md border border-indigo-500"
             />
-            <h2 className="text-xl font-bold font-serif">Continuous Improvement:</h2>
+            <h2 className="text-xl md:text-2xl font-bold">Continuous Improvement:</h2>
             <p className="text-gray-900">
-              We believe in evolving with time. We constantly update our processes and technologies to enhance your experience and provide you with unmatched service.
+              We constantly update our processes and technologies to enhance your experience.
             </p>
           </div>
         </div>
 
         {/* Help Section */}
         <div className="space-y-8">
-          <h2 className="text-2xl font-bold text-center font-serif">How we can help you?</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {/* Contact Us */}
-            <div className="bg-green-100 p-6 rounded-lg shadow-md border-[1px] border-indigo-500">
-              <h3 className="text-lg font-bold flex items-center gap-2 font-serif">
-                <span className="text-green-500">
-                  <FaPhoneAlt className="text-green-500" />
-                </span>
+          <h2 className="text-xl md:text-2xl font-bold text-center">How we can help you?</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <div className="bg-green-100 p-6 rounded-lg shadow-md border border-indigo-500">
+              <h3 className="text-base font-bold flex items-center gap-2">
+                <FaPhoneAlt className="text-green-500" />
                 Contact Us
               </h3>
-              <p className="text-gray-900">
-                Reach out via phone, email, or live chat. Our team is available to assist you with any queries.
+              <p className="text-gray-900 text-sm">
+                Reach out via phone, email, or live chat. Our team is here to assist you.
               </p>
             </div>
 
-            {/* FAQs */}
-            <div className="bg-yellow-100 p-6 rounded-lg shadow-md border-[1px] border-indigo-500">
-              <h3 className="text-lg font-bold flex items-center gap-2 font-serif">
-                <span className="text-yellow-500">
-                  <FaEnvelope className="text-yellow-500" />
-                </span>
+            <div className="bg-yellow-100 p-6 rounded-lg shadow-md border border-indigo-500">
+              <h3 className="text-base font-bold flex items-center gap-2">
+                <FaEnvelope className="text-yellow-500" />
                 FAQs
               </h3>
-              <p className="text-gray-900">
-                Explore our FAQ section for answers to common questions related to orders, shipping, and more.
+              <p className="text-gray-900 text-sm">
+                Check our FAQ section for answers to common questions.
               </p>
             </div>
 
-            {/* Feedback */}
-            <div className="bg-red-100 p-6 rounded-lg shadow-md border-[1px] border-indigo-500">
-              <h3 className="text-lg font-bold flex items-center gap-2 font-serif">
-                <span className="text-red-500">
-                  <FaPaperPlane className="text-red-500" />
-                </span>
+            <div className="bg-red-100 p-6 rounded-lg shadow-md border border-indigo-500">
+              <h3 className="text-base font-bold flex items-center gap-2">
+                <FaPaperPlane className="text-red-500" />
                 Feedback
               </h3>
-              <p className="text-gray-900">
-                Share your feedback to help us serve you better. Your suggestions are crucial for our improvement.
+              <p className="text-gray-900 text-sm">
+                Your feedback helps us improve. Share your thoughts with us.
               </p>
             </div>
           </div>
@@ -90,68 +82,65 @@ export default function Contact() {
       </div>
 
       {/* Contact Form Section */}
-      <div className=" flex flex-col lg:flex-row items-center justify-center p-6 font-sans">
+      <div className="flex flex-col lg:flex-row items-center justify-center px-4 md:px-8 py-8 gap-8">
         {/* Contact Info */}
-        <div className="w-full lg:w-1/2 max-w-md mb-8 lg:mb-0 lg:mr-12">
-          <div className=" shadow-lg rounded-lg p-8 mb-6 border-[1px]  border-indigo-500 hover:border-gray-600 transition-all duration-300 hover:scale-105 ">
-            <div className="flex items-center mb-4">
-              <FaPhoneAlt className="text-gray-900 mr-4 text-2xl" />
-              <h2 className="text-lg font-bold text-gray-800 font-serif">Call to Us</h2>
+        <div className="w-full lg:w-1/2 max-w-md space-y-6">
+          <div className="shadow-lg rounded-lg p-6 border border-indigo-500 hover:border-gray-600 transition duration-300 hover:scale-105">
+            <div className="flex items-center mb-2">
+              <FaPhoneAlt className="text-gray-900 mr-3 text-2xl" />
+              <h2 className="text-base font-bold text-gray-800">Call to Us</h2>
             </div>
-            <p className="text-gray-700 mb-2">
-              We are available 24/7, 7 days a week.
-            </p>
-            <p className="text-gray-900 font-semibold">Phone: +1 234 567 890</p>
+            <p className="text-gray-700 text-sm mb-1">We are available 24/7, 7 days a week.</p>
+            <p className="text-gray-900 font-semibold text-sm">Phone: +1 234 567 890</p>
           </div>
 
-          <div className="shadow-lg rounded-lg p-8 border-[1px] border-indigo-500 hover:border-gray-600 transition-all duration-300 hover:scale-105">
-            <div className="flex items-center mb-4">
-              <FaEnvelope className="text-gray-900 mr-4 text-2xl" />
-              <h2 className="text-lg font-bold text-gray-800 font-serif">Email Us</h2>
+          <div className="shadow-lg rounded-lg p-6 border border-indigo-500 hover:border-gray-600 transition duration-300 hover:scale-105">
+            <div className="flex items-center mb-2">
+              <FaEnvelope className="text-gray-900 mr-3 text-2xl" />
+              <h2 className="text-base font-bold text-gray-800">Email Us</h2>
             </div>
-            <p className="text-gray-700 mb-2">
-              Fill out our form and we will contact you within 24 hours.
+            <p className="text-gray-700 text-sm mb-1">
+              Fill out the form and we’ll get back to you within 24 hours.
             </p>
-            <p className="text-gray-900 font-semibold">customer@BarbellBase.com</p>
-            <p className="text-gray-900 font-semibold">support@BarbellBase.com</p>
+            <p className="text-gray-900 font-semibold text-sm">customer@musclemart.com</p>
+            <p className="text-gray-900 font-semibold text-sm">support@musclemart.com</p>
           </div>
         </div>
 
-        {/* Contact Form */}
+        {/* Form */}
         <div className="w-full lg:w-1/2 max-w-md">
-          <div className=" shadow-xl rounded-lg p-8 border-[1px] border-indigo-500 hover:border-gray-600 transition-all duration-300 hover:scale-105">
-            <h1 className="text-lg font-bold text-center mb-6 font-serif">Give Feedback</h1>
+          <div className="shadow-xl rounded-lg p-6 border border-indigo-500 hover:border-gray-600 transition duration-300 hover:scale-105">
+            <h1 className="text-base font-bold text-center mb-4">Give Feedback</h1>
             <form className="space-y-4">
-              <div>
-                <div className="relative">
-                  <FaUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-900" />
-                  <input
-                    type="text"
-                    placeholder="Your Name"
-                    className="placeholder:text-gray-900 w-full pl-10 pr-3 py-3 border rounded-md focus:outline-none focus:ring-2 transition-all duration-300 border-gray-400 focus:ring-gray-600"
-                  />
-                </div>
+              <div className="relative">
+                <FaUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-900" />
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  className="placeholder:text-gray-900 w-full pl-10 pr-3 py-3 border rounded-md focus:outline-none focus:ring-2 border-gray-400 focus:ring-gray-600"
+                />
               </div>
-              <div>
-                <div className="relative">
-                  <FaEnvelope className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-900" />
-                  <input
-                    type="email"
-                    placeholder="Your Email"
-                    className="placeholder:text-gray-900 w-full pl-10 pr-3 py-3 border rounded-md focus:outline-none focus:ring-2 transition-all duration-300 border-gray-400 focus:ring-gray-600"
-                  />
-                </div>
+
+              <div className="relative">
+                <FaEnvelope className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-900" />
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  className="placeholder:text-gray-900 w-full pl-10 pr-3 py-3 border rounded-md focus:outline-none focus:ring-2 border-gray-400 focus:ring-gray-600"
+                />
               </div>
+
               <div>
                 <textarea
                   placeholder="Your Message"
-                  rows="5"
-                  className="placeholder:text-gray-900 w-full px-3 py-3 border rounded-md focus:outline-none focus:ring-2 transition-all duration-300 border-gray-900 focus:ring-gray-600"
+                  rows={5}
+                  className="placeholder:text-gray-900 w-full px-3 py-3 border rounded-md focus:outline-none focus:ring-2 border-gray-900 focus:ring-gray-600"
                 />
               </div>
+
               <button
                 type="submit"
-                className="w-full py-3   font-semibold  flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-gray-600    rounded-lg  transition-all duration-500 border-[1px] border-gray-300 font-sans hover:bg-gradient-to-t bg-gradient-to-b from-blue-500 to-purple-500 text-white"
+                className="w-full py-3 font-semibold flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-gray-600 rounded-lg border border-gray-300 hover:bg-gradient-to-t bg-gradient-to-b from-blue-500 to-purple-500 text-white transition duration-500"
               >
                 <FaPaperPlane className="mr-2" /> Send Message
               </button>

@@ -87,7 +87,7 @@ export default function Cart() {
     const uniqueCategories = [...new Set(cart.map((item) => item.category))];
 
     return (
-        <div className="min-h-screen b-6  bg-white font-sans max-w-full">
+        <div className="min-h-screen b-6  bg-white max-w-full">
             <div className=" mx-auto">
                 {/* Header Section */}
                 <div className='mx-auto flex text-center justify-center text-3xl border-2 border-indigo-200 bg-indigo-100'>Your Cart</div>
@@ -166,10 +166,10 @@ export default function Cart() {
                                             className="w-24 h-24 object-cover rounded-lg"
                                         />
                                         <div className="text-center sm:text-left">
-                                            <h2 className="text-base md:text-lg font-bold text-gray-800 font-serif">
+                                            <h2 className="text-base md:text-lg font-bold text-gray-800 ">
                                                 {item.name}
                                             </h2>
-                                            <p className="text-sm md:text-base text-gray-600 font-sans">
+                                            <p className="text-sm md:text-base text-gray-600">
                                                 ${item.price.toFixed(2)}
                                             </p>
                                             {item.outOfStock && (
@@ -205,7 +205,7 @@ export default function Cart() {
                                 </div>
                             ))
                         ) : (
-                            <p className="text-center text-gray-600 font-sans">
+                            <p className="text-center text-gray-600">
                                 No products match the filters. Adjust the filters to view items.
                             </p>
                         )}
@@ -213,34 +213,34 @@ export default function Cart() {
                     {/* Price Details */}
                     {filteredCart.length > 0 && (
                         <div className="border border-gray-300 rounded-lg p-6 bg-white shadow-sm">
-                            <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-4 font-serif">
+                            <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-4 ">
                                 Price Details
                             </h3>
                             <div className="space-y-2">
-                                <div className="flex justify-between text-gray-600 font-sans">
+                                <div className="flex justify-between text-gray-600">
                                     <span>Price ({cart.length} items)</span>
                                     <span>${calculateTotal().toFixed(2)}</span>
                                 </div>
-                                <div className="flex justify-between text-gray-600 font-sans">
+                                <div className="flex justify-between text-gray-600">
                                     <span>Discount</span>
                                     <span className="text-green-500">-${calculateSavings().toFixed(2)}</span>
                                 </div>
-                                <div className="flex justify-between text-gray-600 font-sans">
+                                <div className="flex justify-between text-gray-600">
                                     <span>Coupon Discount</span>
                                     <span className="text-green-500">-${calculateCouponDiscount()}</span>
                                 </div>
-                                <div className="flex justify-between text-gray-600 font-sans">
+                                <div className="flex justify-between text-gray-600">
                                     <span>Taxes</span>
                                     <span>${calculateTaxes().toFixed(2)}</span>
                                 </div>
                             </div>
                             <hr className="my-4" />
-                            <div className="flex justify-between font-bold text-gray-800 font-sans">
+                            <div className="flex justify-between font-bold text-gray-800">
                                 <span>Total</span>
                                 <span>${(calculateTotal() - calculateSavings() - calculateCouponDiscount() + calculateTaxes()).toFixed(2)}</span>
                             </div>
                             <button
-                                className="mt-4 w-full hover:border-gray-500 py-2 font-bold  hover:bg-gradient-to-t bg-gradient-to-b from-blue-500 to-purple-500 text-white  rounded-lg hover:bg-white transition-all duration-500 border-2 border-gray-300 font-sans"
+                                className="mt-4 w-full hover:border-gray-500 py-2 font-bold  hover:bg-gradient-to-t bg-gradient-to-b from-blue-500 to-purple-500 text-white  rounded-lg hover:bg-white transition-all duration-500 border-2 border-gray-300"
                                 onClick={handleCheckout}
                             >
                                 Checkout

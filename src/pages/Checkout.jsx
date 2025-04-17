@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 export default function Checkout() {
   const [formData, setFormData] = useState({
@@ -36,77 +36,72 @@ export default function Checkout() {
   };
 
   return (
-    <div className="min-h-screen bg-blue-100 font-sans pb-8">
-              {/* Hero Section */}
-        <div className=" border-b-2 text-white "style={{ backgroundImage: "url('/images/bg.jpg')" }}>
-                <div className="relative w-full h-[5vh] sm:h-[10vh] overflow-hidden">
-                  <div className="relative z-10 flex items-center justify-center w-full h-full bg-black bg-opacity-30">
-                    <h1 className="text-xl sm:text-5xl font-bold  text-white font-serif">Checkout</h1>
-                  </div>
-                </div>
-              </div>
-      <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg">
+    <div className="min-h-screen bg-blue-100 pb-8 px-4 sm:px-6 lg:px-8">
+      {/* Header */}
+      <div className="text-center text-2xl font-semibold py-4 border-2 border-indigo-200 bg-indigo-100">
+        Your Cart
+      </div>
+
+      {/* Main Container */}
+      <div className="max-w-6xl mx-auto bg-white rounded-lg shadow-lg mt-4">
         <div className="grid grid-cols-1 lg:grid-cols-3">
-          <div className="col-span-1 bg-indigo-700 text-white p-6 space-y-4">
-            <h2 className="text-xl font-bold font-serif">BarbellBase</h2>
-            <p className="text-sm text-blue-200 font-sans">
-              BarbellBase Trusted Business
-            </p>
+          {/* Left Panel - Cart Summary */}
+          <div className="bg-indigo-700 text-white p-6 space-y-4">
+            <h2 className="text-2xl font-bold">MuscleMart</h2>
+            <p className="text-base text-blue-200">MuscleMart Trusted Business</p>
 
             <div className="bg-indigo-500 p-4 rounded-lg space-y-3">
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between gap-4">
                 <img
                   src={cartItems[0].image}
                   alt={cartItems[0].name}
-                  className="w-16 h-16 rounded-lg"
+                  className="w-16 h-16 rounded-lg object-contain"
                 />
-                <div>
-                  <p className="font-semibold font-sans">{cartItems[0].name}</p>
-                  <p className="font-sans">Qty: 1</p>
+                <div className="flex-1">
+                  <p className="font-semibold text-base">{cartItems[0].name}</p>
+                  <p className="text-base">Qty: 1</p>
                 </div>
-                <p className="font-semibold text-lg font-sans">
-                  ₹{cartItems[0].price}
-                </p>
+                <p className="font-semibold text-lg">₹{cartItems[0].price}</p>
               </div>
+
               <div className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <p>GST Number</p>
-                  <button className="text-blue-300 underline">Add</button>
+                <div className="flex justify-between">
+                  <p className="text-base">GST Number</p>
+                  <button className="text-blue-300 underline text-base">Add</button>
                 </div>
-                <div className="flex items-center justify-between">
-                  <p>Order instructions</p>
-                  <button className="text-blue-300 underline">Add</button>
+                <div className="flex justify-between">
+                  <p className="text-base">Order instructions</p>
+                  <button className="text-blue-300 underline text-base">Add</button>
                 </div>
               </div>
             </div>
 
-            <button className="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 px-4 rounded-lg mt-6">
+            <button className="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 px-4 rounded-lg text-base mt-6">
               Coupons and offers
             </button>
           </div>
 
+          {/* Right Panel - Address Form */}
           <div className="col-span-2 p-6">
             <form onSubmit={handleSubmit} className="space-y-6">
-              <h2 className="text-xl font-semibold font-serif">
-                Add delivery address
-              </h2>
+              <h2 className="text-2xl font-semibold mb-4">Add Delivery Address</h2>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <input
                   type="text"
                   name="pincode"
                   placeholder="Pincode"
-                  className="border border-gray-300 rounded-lg p-3 w-full"
+                  className="border border-gray-300 rounded-lg p-3 w-full text-base"
                   value={formData.pincode}
                   onChange={handleChange}
                   required
                 />
-                <div className="flex gap-4">
+                <div className="flex gap-4 w-full">
                   <input
                     type="text"
                     name="city"
                     placeholder="City"
-                    className="border border-gray-300 rounded-lg p-3 w-1/2"
+                    className="border border-gray-300 rounded-lg p-3 w-1/2 text-base"
                     value={formData.city}
                     onChange={handleChange}
                     required
@@ -115,7 +110,7 @@ export default function Checkout() {
                     type="text"
                     name="state"
                     placeholder="State"
-                    className="border border-gray-300 rounded-lg p-3 w-1/2"
+                    className="border border-gray-300 rounded-lg p-3 w-1/2 text-base"
                     value={formData.state}
                     onChange={handleChange}
                     required
@@ -127,7 +122,7 @@ export default function Checkout() {
                 type="text"
                 name="fullName"
                 placeholder="Full name"
-                className="border border-gray-300 rounded-lg p-3 w-full"
+                className="border border-gray-300 rounded-lg p-3 w-full text-base"
                 value={formData.fullName}
                 onChange={handleChange}
                 required
@@ -137,7 +132,7 @@ export default function Checkout() {
                 type="text"
                 name="house"
                 placeholder="House no / Building / Apartment"
-                className="border border-gray-300 rounded-lg p-3 w-full"
+                className="border border-gray-300 rounded-lg p-3 w-full text-base"
                 value={formData.house}
                 onChange={handleChange}
                 required
@@ -147,19 +142,20 @@ export default function Checkout() {
                 type="text"
                 name="area"
                 placeholder="Area, Sector, Street, Village"
-                className="border border-gray-300 rounded-lg p-3 w-full"
+                className="border border-gray-300 rounded-lg p-3 w-full text-base"
                 value={formData.area}
                 onChange={handleChange}
                 required
               />
 
-              <button
-                type="button"
-                className="text-blue-600 underline"
-                onClick={() => setFormData({ ...formData, landmark: "" })}
-              >
-                + Add landmark (optional)
-              </button>
+              <input
+                type="text"
+                name="landmark"
+                placeholder="Landmark (optional)"
+                className="border border-gray-300 rounded-lg p-3 w-full text-base"
+                value={formData.landmark}
+                onChange={handleChange}
+              />
 
               <div className="flex items-center gap-2">
                 <input
@@ -168,12 +164,12 @@ export default function Checkout() {
                   checked={formData.saveAddress}
                   onChange={handleChange}
                 />
-                <p className="text-sm">Save my address as</p>
+                <label htmlFor="saveAddress" className="text-base">Save my address</label>
               </div>
 
               <button
                 type="submit"
-                className="w-full hover:bg-gradient-to-t bg-gradient-to-b from-blue-500 to-purple-500 text-white py-3 rounded-lg font-medium "
+                className="w-full bg-gradient-to-b from-blue-500 to-purple-500 hover:from-purple-500 hover:to-blue-500 text-white py-3 rounded-lg font-medium text-base"
               >
                 Continue
               </button>

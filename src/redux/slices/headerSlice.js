@@ -10,7 +10,7 @@ const initialState = {
   links: [
     { path: '/', label: 'Home' },
     { path: '/About', label: 'About Us' },
-    { path: '/products', label: 'Shop' },
+    { path: '/product', label: 'Shop' },
     { path: '/contact', label: 'Contact' },
   ],
 };
