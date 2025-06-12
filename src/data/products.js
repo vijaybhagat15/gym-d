@@ -46,15 +46,6 @@ export const products = [
     "rating": 4.6
   },
   {
-    "id": 6,
-    "name": "Pull-Up Bar",
-    "price": 39.99,
-    "description": "Doorway pull-up bar for upper body strength training.",
-    "image": "https://www.portablepullupbars.com/wp-content/uploads/2022/04/ceayun-pull-up-bar-dimensions-portable-pull-up-bars-600x600.jpg",
-    "category": "Strength ",
-    "rating": 4.5
-  },
-  {
     "id": 7,
     "name": "Foam Roller",
     "price": 24.99,
